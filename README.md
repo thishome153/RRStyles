@@ -9,6 +9,6 @@
 
 
 
-##### Fixosoft 2018, 
+##### Fixosoft 2018 
 ##### Eclipse IDE for JavaScript and Web Developers
 ##### Version: 2018-09 (4.9.0)  Build id: 20180917-1800

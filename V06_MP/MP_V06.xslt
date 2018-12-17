@@ -4097,7 +4097,7 @@
 				<xsl:value-of select="//MP/@GUID" />
 				<br />
 
-				MP V06 Stylesheet v1.0452
+				MP V06 Stylesheet v1.0453
 				<br />
 
 				@2018 Fixosoft

@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<STD_MP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <eDocument CodeType="015" Version="04" GUID="5cecba13-f2ae-4715-b890-0a69831da4ae" />
+  <Title>
+    <Contractor Date="2014-11-20">
+      <FIO>
+        <Surname>Ромашова</Surname>
+        <First>Жанна</First>
+        <Patronymic>Юрьевна</Patronymic>
+      </FIO>
+      <N_Certificate>26-11-338</N_Certificate>
+      <Telephone />
+      <Address>Труновский район, село Донское, Промышленная улица, д.1</Address>
+      <E_mail>romashova@geo-complex.ru</E_mail>
+      <Organization>ООО "ГЕОКОМПЛЕКС"</Organization>
+    </Contractor>
+    <Reason>образованием части земельного участка с кадастровым номером 23:29:0302002:41 , расположенного Краснодарский край, р-н Тбилисский, с/п Тбилисское, на землях ААФЗТ "Кавказ"</Reason>
+    <Client Date="2014-11-20">
+      <Person>
+        <FIO>
+          <Surname>Римша</Surname>
+          <First>Олег</First>
+          <Patronymic>Владмирович</Patronymic>
+        </FIO>
+      </Person>
+    </Client>
+  </Title>
+  <Package>
+    <NewSubParcel Definition="23:29:0302002:41/чзу1" SubParcel_Realty="0">
+      <CadastralNumber_Parcel>23:29:0302002:41</CadastralNumber_Parcel>
+      <Area>
+        <Area>1427</Area>
+        <Unit>055</Unit>
+        <Innccuracy>331</Innccuracy>
+      </Area>
+      <Encumbrance>
+        <Name>Часть земельного участка формируется в целях передачи в аренду. Под дорогой (технологический подъезд к крановому узлу на 1268 км.)</Name>
+        <Type>022006000000</Type>
+      </Encumbrance>
+      <Entity_Spatial Ent_Sys="Id1162c7e5-92d0-4719-9c8d-31e119ef80ee">
+        <Spatial_Element>
+          <Spelement_Unit Type_Unit="Точка">
+            <NewOrdinate Geopoint_Zacrep="Закрепление отсутствует" Num_Geopoint="1" Point_Pref="н" X="521907.25" Y="2234769.48" Delta_Geopoint="2.50" />
+          </Spelement_Unit>
+          <Spelement_Unit Type_Unit="Точка">
+            <NewOrdinate Geopoint_Zacrep="Закрепление отсутствует" Num_Geopoint="2" Point_Pref="н" X="521913.98" Y="2234775.42" Delta_Geopoint="2.50" />
+          </Spelement_Unit>
+          <Spelement_Unit Type_Unit="Точка">
+            <NewOrdinate Geopoint_Zacrep="Закрепление отсутствует" Num_Geopoint="3" Point_Pref="н" X="521940.71" Y="2234799.12" Delta_Geopoint="2.50" />
+          </Spelement_Unit>
+          <Spelement_Unit Type_Unit="Точка">
+            <NewOrdinate Geopoint_Zacrep="Закрепление отсутствует" Num_Geopoint="4" Point_Pref="н" X="521992.32" Y="2234853.58" Delta_Geopoint="2.50" />
+          </Spelement_Unit>
+          <Spelement_Unit Type_Unit="Точка">
+            <NewOrdinate Geopoint_Zacrep="Закрепление отсутствует" Num_Geopoint="5" Point_Pref="н" X="522039.67" Y="2234903.37" Delta_Geopoint="2.50" />
+          </Spelement_Unit>
+          <Spelement_Unit Type_Unit="Точка">
+            <NewOrdinate Geopoint_Zacrep="Закрепление отсутствует" Num_Geopoint="6" Point_Pref="н" X="522051.56" Y="2234917.61" Delta_Geopoint="2.50" />
+          </Spelement_Unit>
+          <Spelement_Unit Type_Unit="Точка">
+            <NewOrdinate Geopoint_Zacrep="Закрепление отсутствует" Num_Geopoint="7" Point_Pref="н" X="522055.44" Y="2234922.39" Delta_Geopoint="2.50" />
+          </Spelement_Unit>
+          <Spelement_Unit Type_Unit="Точка">
+            <NewOrdinate Geopoint_Zacrep="Закрепление отсутствует" Num_Geopoint="8" Point_Pref="н" X="522066.05" Y="2234937.96" Delta_Geopoint="2.50" />
+          </Spelement_Unit>
+          <Spelement_Unit Type_Unit="Точка">
+            <NewOrdinate Geopoint_Zacrep="Закрепление отсутствует" Num_Geopoint="9" Point_Pref="н" X="522071.71" Y="2234946.93" Delta_Geopoint="2.50" />
+          </Spelement_Unit>
+          <Spelement_Unit Type_Unit="Точка">
+            <NewOrdinate Geopoint_Zacrep="Закрепление отсутствует" Num_Geopoint="10" Point_Pref="н" X="522064.93" Y="2234946.92" Delta_Geopoint="2.50" />
+          </Spelement_Unit>
+          <Spelement_Unit Type_Unit="Точка">
+            <NewOrdinate Geopoint_Zacrep="Закрепление отсутствует" Num_Geopoint="11" Point_Pref="н" X="522061.14" Y="2234941.40" Delta_Geopoint="2.50" />
+          </Spelement_Unit>
+          <Spelement_Unit Type_Unit="Точка">
+            <NewOrdinate Geopoint_Zacrep="Закрепление отсутствует" Num_Geopoint="12" Point_Pref="н" X="522050.88" Y="2234926.28" Delta_Geopoint="2.50" />
+          </Spelement_Unit>
+          <Spelement_Unit Type_Unit="Точка">
+            <NewOrdinate Geopoint_Zacrep="Закрепление отсутствует" Num_Geopoint="13" Point_Pref="н" X="522047.00" Y="2234921.51" Delta_Geopoint="2.50" />
+          </Spelement_Unit>
+          <Spelement_Unit Type_Unit="Точка">
+            <NewOrdinate Geopoint_Zacrep="Закрепление отсутствует" Num_Geopoint="14" Point_Pref="н" X="522035.23" Y="2234907.40" Delta_Geopoint="2.50" />
+          </Spelement_Unit>
+          <Spelement_Unit Type_Unit="Точка">
+            <NewOrdinate Geopoint_Zacrep="Закрепление отсутствует" Num_Geopoint="15" Point_Pref="н" X="522007.90" Y="2234878.43" Delta_Geopoint="2.50" />
+          </Spelement_Unit>
+          <Spelement_Unit Type_Unit="Точка">
+            <NewOrdinate Geopoint_Zacrep="Закрепление отсутствует" Num_Geopoint="16" Point_Pref="н" X="521986.63" Y="2234856.21" Delta_Geopoint="2.50" />
+          </Spelement_Unit>
+          <Spelement_Unit Type_Unit="Точка">
+            <NewOrdinate Geopoint_Zacrep="Закрепление отсутствует" Num_Geopoint="17" Point_Pref="н" X="521936.28" Y="2234803.13" Delta_Geopoint="2.50" />
+          </Spelement_Unit>
+          <Spelement_Unit Type_Unit="Точка">
+            <NewOrdinate Geopoint_Zacrep="Закрепление отсутствует" Num_Geopoint="18" Point_Pref="н" X="521903.17" Y="2234773.88" Delta_Geopoint="2.50" />
+          </Spelement_Unit>
+          <Spelement_Unit Type_Unit="Точка">
+            <NewOrdinate Geopoint_Zacrep="Закрепление отсутствует" Num_Geopoint="1" Point_Pref="н" X="521907.25" Y="2234769.48" Delta_Geopoint="2.50" />
+          </Spelement_Unit>
+        </Spatial_Element>
+      </Entity_Spatial>
+    </NewSubParcel>
+  </Package>
+  <Coord_Systems>
+    <Coord_System Name="МСК-26 от СК-95, зона 1" Cs_Id="Id1162c7e5-92d0-4719-9c8d-31e119ef80ee" />
+  </Coord_Systems>
+  <Input_Data>
+    <Documents>
+      <Document>
+        <Code_Document>558217000000</Code_Document>
+        <Name>Кадастровый план территории</Name>
+        <Number>2343/12/14-580670</Number>
+        <Date>2014-07-07</Date>
+      </Document>
+    </Documents>
+  </Input_Data>
+  <Survey>
+    <AppliedFile Kind="01" Name="ed20c9b7-38d3-475e-a905-bf1b306db69b\MFile1.pdf" />
+  </Survey>
+  <Conclusion>Часть земельного участка образуются под технологический подъезд к крановому узлу на 1268 км. нефтепроводной системы в интересах ЗАО "КТК-Р" с целью заключения в дальнейшем договора аренды. Документ, подтверждающий цель формирования части отсутствует. Размеры части определены в соответствии с техническим заданием к договору оказания услуг, аналитическим методом на основании границ земельного участка 23:29:0302002:41, сведения о которых уточнены в государственном кадастре недвижимости.</Conclusion>
+  <Scheme_Disposition_Parcels>
+    <AppliedFile Kind="01" Name="ed20c9b7-38d3-475e-a905-bf1b306db69b\MFile2.pdf" />
+  </Scheme_Disposition_Parcels>
+  <Diagram_Parcels_SubParcels>
+    <AppliedFile Kind="01" Name="ed20c9b7-38d3-475e-a905-bf1b306db69b\MFile3.pdf" />
+  </Diagram_Parcels_SubParcels>
+  <Appendix>
+    <Document>
+      <Code_Document>558301010000</Code_Document>
+      <Name>Доверенность</Name>
+      <Number>77 АБ 3820267</Number>
+      <Date>2014-07-14</Date>
+      <AppliedFiles>
+        <AppliedFile Kind="01" Name="ed20c9b7-38d3-475e-a905-bf1b306db69b\MFile4.pdf" />
+      </AppliedFiles>
+    </Document>
+  </Appendix>
+</STD_MP>

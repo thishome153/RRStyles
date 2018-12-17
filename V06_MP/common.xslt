@@ -3,7 +3,7 @@
 	xmlns:gen="urn://x-artefacts-rosreestr-ru/commons/complex-types/general-gkn/1.0.2">
 
 	<!-- <xsl:import href="FormatCheck.xslt" /> -->
-	<xsl:import href="Dictionary.xslt" /> <!-- Dictionary to work with files or direct -->
+	  <xsl:import href="Dictionary.xslt" />  <!-- Dictionary to work with files or direct -->
 
 	<xsl:variable name="TableWidth" select="800" />
 	<xsl:variable name="ppp" select="0" />

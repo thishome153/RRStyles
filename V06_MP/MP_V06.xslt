@@ -1,6 +1,10 @@
 <xsl:stylesheet version='1.0' xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
 	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
 	<xsl:import href="common.xslt" />
+
+
 	<!-- Вспомогательные действия -->
 
 
@@ -3525,6 +3529,18 @@
 					</tr>
 					<tr>
 						<!-- ProvidingPassCadastralNumbers/Other <xsl:if test="Other!=''"> <xsl:text>земли общего пользования</xsl:text> </xsl:if> -->
+										<tr>
+						<td align="center">
+							<xsl:text>-</xsl:text>
+						</td>
+						<td align="center">
+							<xsl:text>-</xsl:text>
+						</td>
+						<td align="center">
+							<xsl:text>-</xsl:text>
+						</td>
+					</tr>
+					
 					</tr>
 				</table>
 			</td>
@@ -3735,14 +3751,11 @@
 				, v
 				<xsl:value-of select="//MP/@VersionSoftware" />
 				<br />
-				Дата работ
-				<xsl:value-of select="//MP/GeneralCadastralWorks//@DateCadastral" />
-				<br />
 
 				<xsl:value-of select="//MP/@GUID" />
 				<br />
 
-				MP V06 Stylesheet v1.047
+				MP V06 Stylesheet v1.048
 				<br />
 
 				@2018 Fixosoft

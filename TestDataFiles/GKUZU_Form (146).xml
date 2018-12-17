@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MP Version="06" NameSoftware="ТехноКад-Экспресс" VersionSoftware="2.19.30321.0" GUID="40f6ef2f-c7b9-40fe-83e6-156387be7f3d">
+  <Package>
+    <FormParcels Method="1">
+      <NewParcel Definition="26:01:000000:146:ЗУ1">
+        <CadastralBlock>26:01:070601</CadastralBlock>
+        <PrevCadastralNumbers>
+          <CadastralNumber>26:01:000000:146</CadastralNumber>
+        </PrevCadastralNumbers>
+        <ProvidingPassCadastralNumbers>
+          <Other>-</Other>
+        </ProvidingPassCadastralNumbers>
+        <Area>
+          <Area>1893012</Area>
+          <Unit>055</Unit>
+          <Inaccuracy>12039</Inaccuracy>
+        </Area>
+        <Address AddressOrLocation="0">
+          <OKATO>07230000000</OKATO>
+          <KLADR>2601400000000</KLADR>
+          <Region>26</Region>
+          <District Name="Красногвардейский" Type="р-н" />
+          <City Name="Муниципальное образование села Дмитриевского Красногвардейского района Ставропольского края" Type="с/мо" />
+          <Locality Name="Дмитриевское" Type="с" />
+          <Other>Российская Федерация</Other>
+        </Address>
+        <Category Category="003001000000" />
+        <Utilization ByDoc="Для сельскохозяйственного производства" />
+        <Contours>
+          <NewContour Definition="26:01:000000:146:ЗУ1(1)">
+            <Area>
+              <Area>973071.09</Area>
+              <Unit>055</Unit>
+            </Area>
+            <EntitySpatial EntSys="Id3df3382a-17d0-4d77-bfff-8b4f51b60173">
+              <SpatialElement>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="1" X="565713.63" Y="1307645.87" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="2" X="565612.47" Y="1307842.31" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="3" X="565540.95" Y="1308026.67" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="4" X="564807.63" Y="1308018.19" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="5" X="564810.38" Y="1307835.10" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="6" X="564776.21" Y="1307622.27" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="7" X="564776.19" Y="1307602.07" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="8" X="564774.06" Y="1307573.67" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="9" X="564761.72" Y="1307484.77" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="10" X="564761.93" Y="1307345.50" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="11" X="564787.08" Y="1307178.94" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="12" X="564794.53" Y="1307048.40" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="13" X="566023.99" Y="1307028.62" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="14" X="566018.17" Y="1307050.58" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="15" X="565854.13" Y="1307368.91" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="1" X="565713.63" Y="1307645.87" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+              </SpatialElement>
+              <Borders>
+                <Border Point1="1" Point2="2" Spatial="1">
+                  <Edge>
+                    <Length>220.96</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="2" Point2="3" Spatial="1">
+                  <Edge>
+                    <Length>197.75</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="3" Point2="4" Spatial="1">
+                  <Edge>
+                    <Length>733.37</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="4" Point2="5" Spatial="1">
+                  <Edge>
+                    <Length>183.11</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="5" Point2="6" Spatial="1">
+                  <Edge>
+                    <Length>215.56</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="6" Point2="7" Spatial="1">
+                  <Edge>
+                    <Length>20.20</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="7" Point2="8" Spatial="1">
+                  <Edge>
+                    <Length>28.48</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="8" Point2="9" Spatial="1">
+                  <Edge>
+                    <Length>89.75</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="9" Point2="10" Spatial="1">
+                  <Edge>
+                    <Length>139.27</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="10" Point2="11" Spatial="1">
+                  <Edge>
+                    <Length>168.45</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="11" Point2="12" Spatial="1">
+                  <Edge>
+                    <Length>130.75</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="12" Point2="13" Spatial="1">
+                  <Edge>
+                    <Length>1229.62</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="13" Point2="14" Spatial="1">
+                  <Edge>
+                    <Length>22.72</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="14" Point2="15" Spatial="1">
+                  <Edge>
+                    <Length>358.11</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="15" Point2="1" Spatial="1">
+                  <Edge>
+                    <Length>310.56</Length>
+                  </Edge>
+                </Border>
+              </Borders>
+            </EntitySpatial>
+            <ProvidingPassCadastralNumbers>
+              <Other>Земли общего пользования</Other>
+            </ProvidingPassCadastralNumbers>
+          </NewContour>
+          <NewContour Definition="26:01:000000:146:ЗУ1(2)">
+            <Area>
+              <Area>919940.87</Area>
+              <Unit>055</Unit>
+            </Area>
+            <EntitySpatial EntSys="Id3df3382a-17d0-4d77-bfff-8b4f51b60173">
+              <SpatialElement>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="16 " X="566116.58" Y="1306673.03" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="17 " X="566031.28" Y="1307001.69" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="18 " X="564791.93" Y="1307021.42" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="19 " X="564748.67" Y="1306679.58" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="20 " X="564693.34" Y="1306370.52" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="21 " PointPref="н" X="564692.21" Y="1306341.53" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="22 " PointPref="н" X="566203.04" Y="1306340.50" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="23 " X="566161.67" Y="1306499.57" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+                <SpelementUnit TypeUnit="Точка">
+                  <Ordinate GeopointZacrep="Закрепление отсутствует" NumGeopoint="16 " X="566116.58" Y="1306673.03" DeltaGeopoint="2.50" />
+                </SpelementUnit>
+              </SpatialElement>
+              <Borders>
+                <Border Point1="17" Point2="18" Spatial="1">
+                  <Edge>
+                    <Length>339.55</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="18" Point2="19" Spatial="1">
+                  <Edge>
+                    <Length>1239.51</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="19" Point2="20" Spatial="1">
+                  <Edge>
+                    <Length>344.57</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="20" Point2="21" Spatial="1">
+                  <Edge>
+                    <Length>313.97</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="21" Point2="22" Spatial="1">
+                  <Edge>
+                    <Length>29.01</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="22" Point2="23" Spatial="1">
+                  <Edge>
+                    <Length>1510.83</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="23" Point2="24" Spatial="1">
+                  <Edge>
+                    <Length>164.36</Length>
+                  </Edge>
+                </Border>
+                <Border Point1="24" Point2="17" Spatial="1">
+                  <Edge>
+                    <Length>179.22</Length>
+                  </Edge>
+                </Border>
+              </Borders>
+            </EntitySpatial>
+            <ProvidingPassCadastralNumbers>
+              <Other>Земли общего пользования</Other>
+            </ProvidingPassCadastralNumbers>
+          </NewContour>
+        </Contours>
+      </NewParcel>
+      <ChangeParcel CadastralNumber="26:01:000000:146">
+        <CadastralBlock>26:01:070601</CadastralBlock>
+        <ProvidingPassCadastralNumbers>
+          <Other>Земли общего пользования</Other>
+        </ProvidingPassCadastralNumbers>
+        <DeleteEntryParcels>
+          <DeleteEntryParcel CadastralNumber="26:01:070601:4" />
+        </DeleteEntryParcels>
+        <TransformationEntryParcels>
+          <TransformationEntryParcel CadastralNumber="26:01:070601:5" />
+        </TransformationEntryParcels>
+      </ChangeParcel>
+    </FormParcels>
+  </Package>
+  <GeneralCadastralWorks DateCadastral="2018-03-27">
+    <Contractor>
+      <FamilyName>Римша</FamilyName>
+      <FirstName>Олег</FirstName>
+      <Patronymic>Владимирович</Patronymic>
+      <NCertificate>26-11-115</NCertificate>
+      <Telephone>+78654633898</Telephone>
+      <Address>Ставропольский край Труновский р-н Донское село ул Промышленная дом 1</Address>
+      <Email>rimsha-ov@mail.ru</Email>
+      <Organization>
+        <Name>ООО "ГЕОКОМПЛЕКС"</Name>
+        <AddressOrganization>Ставропольский край Труновский р-н Донское село ул Промышленная дом 1</AddressOrganization>
+      </Organization>
+    </Contractor>
+    <Reason>образованием земельного участка путем выдела в счет доли (долей) в праве общей собственности на земельный участок с кадастровым номером 26:01:000000:146, расположенный установлено установлено относительно ориентира, расположенного за пределами участка. Ориентир здание администрации с. Красногвардейское. Участок находится примерно в 25 км от ориентира по направлению на восток. Почтовый адрес ориентира край Ставропольский, р-н Красногвардейский, с. Дмитриевское,</Reason>
+    <Clients>
+      <Client>
+        <Organization>
+          <Name>Сельскохозяйственный производственный кооператив колхоз "Родина"</Name>
+          <INN>2611006218</INN>
+          <OGRN>1022602822120</OGRN>
+        </Organization>
+      </Client>
+    </Clients>
+  </GeneralCadastralWorks>
+  <CoordSystems>
+    <CoordSystem CsId="Id3df3382a-17d0-4d77-bfff-8b4f51b60173" Name="МСК-26 от СК-95, зона 1" />
+  </CoordSystems>
+  <InputData>
+    <Documents>
+      <Document>
+        <CodeDocument>558200000000</CodeDocument>
+        <Name>Выписка из ЕГРН об основных характеристиках и зарегистрированных правах на объект недвижимости</Name>
+        <Number>99/2018/63579096</Number>
+        <Date>2018-01-25</Date>
+      </Document>
+      <Document>
+        <CodeDocument>558200000000</CodeDocument>
+        <Name>Проект межевания</Name>
+        <Number>-</Number>
+        <Date>2018-03-05</Date>
+      </Document>
+      <Document>
+        <CodeDocument>558200000000</CodeDocument>
+        <Name>Согласие арендатора земельного участка</Name>
+        <Number>45</Number>
+        <Date>2018-02-09</Date>
+      </Document>
+    </Documents>
+  </InputData>
+  <Survey>
+    <GeopointsOpred>
+      <GeopointOpred>
+        <CadastralNumberDefinition>26:01:000000:146:ЗУ1</CadastralNumberDefinition>
+        <Methods>
+          <GeopointOpred>692006000000</GeopointOpred>
+        </Methods>
+      </GeopointOpred>
+    </GeopointsOpred>
+    <TochnAreaParcels>
+      <TochnAreaParcel>
+        <CadastralNumberDefinition>26:01:000000:146:ЗУ1</CadastralNumberDefinition>
+        <Formula>∆Р = 3.5 * 2.5 *√1893012 </Formula>
+        <Area>
+          <Area>1893012</Area>
+          <Unit>055</Unit>
+        </Area>
+      </TochnAreaParcel>
+    </TochnAreaParcels>
+  </Survey>
+  <Conclusion>Договор на выполнение кадастровых работ № ОС-2017-1 от 09.02.2017 г.
+Заказчик работ СПК Колхоз "Родина" , ОГРН:1022602822120, ИНН: 2611006218.
+Межевой план подготовил кадастровый инженер Римша Олег Владимирович, являющийся членом СРО,
+КИ Ассоциация саморегулируемая организация "Объединение кадастровых инженеров" (уникальный реестровый номер кадастрового
+инженера в реестре членов СРО КИ N 998).
+Сведения о СРО КИ Ассоциация саморегулируемая организация "Объединение кадастровых
+инженеров" содержатся в государственном реестре СРО КИ (уникальный номер реестровой записи от "28" октября 2016 г. N 010).
+СНИЛС кадастрового инженера 041-213-393-98.
+Номер регистрации в государственном реестре лиц, осуществляющих кадастровую деятельность 5431.
+Местоположение участка для выдела в счет долей в праве общей долевой собственности на земельный
+участок с кадастровым номером 26:01:000000:146 определено проектом межевания земельных участков, утвержденном участником
+общей долевой собственности. 
+Извещение о согласовании проекта межевания опубликовано в печатном издании, определенном
+субъектом для опубликования сообщений и извещений, подлежащих опубликованию в соответствии с Федеральным законом "Об обороте земель
+сельскохозяйственного назначения" - Постановлении Правительства Ставропольского края от 12.01.2016 N 8-п "Об определении перечня
+периодических печатных изданий, в которых публикуются сообщения и извещения, подлежащие опубликованию в соответствии с
+Федеральным законом "Об обороте земель сельскохозяйственного назначения" – газете «Сельская новь» от 31 января 2018 года №6 (10552).
+В установленный Федеральным законом от 24.07.2002 N 101-ФЗ "Об обороте земель
+сельскохозяйственного назначения" 30-дневный срок возражений относительно размера и местоположения границ выделяемых участков в адрес кадастрового
+инженера не поступило, соответственно проект считается согласованным.
+Согласно Проекту межевания земельных участков от 5 марта 2018 г площадь образуемого земельного 
+участка - 1893018 кв.м. , площадь образуемого  земельного участка указанная в межевом плане- 
+1893012 кв.м. Разница в площади составляет 6 кв.м., что менее 10%, предусмотренных требованиями 
+ст.26 Федерального закона от 13.07.2015 N 218-ФЗ "О государственной регистрации недвижимости".
+Площадь образуемого земельного участка соответствует требованиям ст.32 "Предельные размеры
+образуемых новых земельных участков из земель сельскохозяйственного назначения" закона 
+Ставропольского края от 09.04.2015 N 36-кз "О некоторых вопросах регулирования земельных отношений"(в ред. Закона Ставропольского края от 
+10.04.2017 N 25-кз). Источник публикации: Официальный интернет-портал правовой информации Ставропольского края www.pravo.stavregion.ru,
+09.04.2015, "Ставропольская правда", N 69, 14.04.2015.
+Предельные минимальный и максимальный размеры земельного участка установлены Законом
+Ставропольского края от 9 апреля 2015 года
+№36-КЗ «О некоторых вопросах регулирования земельных отношений» (в ред. от 09.11.2017 N 114-кз)
+статьями 32 и 34 соответственно, минимальный размер земельного участка, выделяемого в счет земельной доли или земельных долей,
+определяется на основании данных, указанных в документах, удостоверяющих право на эту земельную долю или эти земельные доли,
+максимальный размер устанавливается равным 10 % общей площади сельскохозяйственных угодий территории муниципального района
+Ставропольского края, в котором расположен это земельный участок. Источник публикации закона: Официальный интернет-портал правовой
+информации Ставропольского края www.pravo.stavregion.ru, 09.04.2015, "Ставропольская правда", N 69, 14.04.2015.
+Координаты земельных участков определены аналитическим методом по координатам исходного
+земельного участка 26:01:000000:146, сведения государственного реестра недвижимости о границах которого носят уточненный характер, поэтому В
+соответствии с п.14 Требований с примененным методом раздел «Схема геодезических построений» в состав межевого плана не включен.
+По этой же причине не заполнялись реквизиты 2 и 3 раздела "Исходные данные" (п. 32 Требований).
+Доступ к образуемому земельному участку, а также к измененному земельному участку обеспечивается
+от земельных участков общего пользования – полевых дорог.
+Межевой план доработан с учетом решения о приостановлении 26/127/012/2018-71 от 05.03.2018 г. </Conclusion>
+  <SchemeDisposition Kind="01" Name="13627d1f-8c1a-4b29-bd35-bf0fcb5bc5dd\MFile1.pdf" />
+  <DiagramParcelsSubParcels Kind="01" Name="13627d1f-8c1a-4b29-bd35-bf0fcb5bc5dd\MFile2.pdf" />
+  <Appendix>
+    <AppliedFiles>
+      <NumberAppendix>1</NumberAppendix>
+      <NameAppendix>Согласие арендатора земельного участка</NameAppendix>
+      <AppliedFile Kind="01" Name="13627d1f-8c1a-4b29-bd35-bf0fcb5bc5dd\MFile3.pdf" />
+    </AppliedFiles>
+  </Appendix>
+</MP>

@@ -1,11 +1,10 @@
-<xsl:stylesheet version='1.0'
-	xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+<xsl:stylesheet version='1.0' xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
 	xmlns:gkn="urn://x-artefacts-rosreestr-gov-ru/requests/gkn/3.0.9"
 	xmlns:gen="urn://x-artefacts-rosreestr-ru/commons/complex-types/general-gkn/1.0.2">
 
-	<xsl:import href="FormatCheck.xslt" />
-	<xsl:import href="Dictionary.xslt" /> <!-- Dictionary to work with files  or direct -->
- 
+	<!-- <xsl:import href="FormatCheck.xslt" /> -->
+	<xsl:import href="Dictionary.xslt" /> <!-- Dictionary to work with files or direct -->
+
 	<xsl:variable name="TableWidth" select="800" />
 	<xsl:variable name="ppp" select="0" />
 	<xsl:variable name="ttt" select="''" />
@@ -15,10 +14,8 @@
 			<xsl:when test="/Requests_GZK_Realty">
 				<xsl:text>Request</xsl:text>
 				<xsl:choose>
-					<xsl:when
-						test="/Requests_GZK_Realty/eDocument/@Version != ''">
-						<xsl:value-of
-							select="/Requests_GZK_Realty/eDocument/@Version" />
+					<xsl:when test="/Requests_GZK_Realty/eDocument/@Version != ''">
+						<xsl:value-of select="/Requests_GZK_Realty/eDocument/@Version" />
 					</xsl:when>
 					<xsl:otherwise>
 						11
@@ -188,8 +185,7 @@
 				<xsl:text> </xsl:text>
 				<xsl:value-of select="substring($date,9,2)" />
 				<xsl:text> </xsl:text>
-				<xsl:variable name="month"
-					select="substring($date,6,2)" />
+				<xsl:variable name="month" select="substring($date,6,2)" />
 				<xsl:choose>
 					<xsl:when test="$month='01'">
 						<xsl:text>января</xsl:text>
@@ -332,8 +328,7 @@
 				<xsl:value-of select="$code" />
 				<xsl:text>|</xsl:text>
 			</xsl:variable>
-			<xsl:value-of
-				select="substring-before(substring-after($dict,$BcodeB),'|')" />
+			<xsl:value-of select="substring-before(substring-after($dict,$BcodeB),'|')" />
 		</xsl:if>
 	</xsl:template>
 
@@ -390,75 +385,21 @@
 			<xsl:with-param name="siz" select="$siz" />
 		</xsl:call-template>
 	</xsl:template>
-
-	<xsl:template name="RegBox">
-		<xsl:param name="code" />
-		<xsl:param name="siz" />
-		<xsl:variable name="text">
-			<xsl:call-template name="Reg">
-				<xsl:with-param name="code" select="$code" />
-			</xsl:call-template>
-		</xsl:variable>
-		<xsl:call-template name="TextBox">
-			<xsl:with-param name="val" select="$text" />
-			<xsl:with-param name="siz" select="$siz" />
-		</xsl:call-template>
-	</xsl:template>
-
-	<xsl:template name="PackBox">
-		<xsl:param name="code" />
-		<xsl:param name="siz" />
-		<xsl:variable name="text">
-			<xsl:call-template name="Pack">
-				<xsl:with-param name="code" select="$code" />
-			</xsl:call-template>
-		</xsl:variable>
-		<xsl:call-template name="TextBox">
-			<xsl:with-param name="val" select="$text" />
-			<xsl:with-param name="siz" select="$siz" />
-		</xsl:call-template>
-	</xsl:template>
-
-	<xsl:template name="DocBox">
-		<xsl:param name="code" />
-		<xsl:param name="siz" />
-		<xsl:variable name="text">
-			<xsl:call-template name="Doc">
-				<xsl:with-param name="code" select="$code" />
-			</xsl:call-template>
-		</xsl:variable>
-		<xsl:call-template name="TextBox">
-			<xsl:with-param name="val" select="$text" />
-			<xsl:with-param name="siz" select="$siz" />
-		</xsl:call-template>
-	</xsl:template>
-
-	<xsl:template name="ControlStageBox">
-		<xsl:param name="code" />
-		<xsl:param name="siz" />
-		<xsl:param name="comment" />
-		<xsl:variable name="text">
-			<xsl:call-template name="ControlStage">
-				<xsl:with-param name="code" select="$code" />
-			</xsl:call-template>
-		</xsl:variable>
-		<xsl:variable name="text1">
-			<xsl:choose>
-				<xsl:when test="$comment!=''">
-					<xsl:value-of
-						select="concat($text, concat(' - ',$comment))" />
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:value-of select="$text" />
-				</xsl:otherwise>
-			</xsl:choose>
-		</xsl:variable>
-		<xsl:call-template name="TextBox">
-			<xsl:with-param name="val" select="$text1" />
-			<xsl:with-param name="siz" select="$siz" />
-		</xsl:call-template>
-	</xsl:template>
-
+	<!-- <xsl:template name="RegBox"> <xsl:param name="code" /> <xsl:param name="siz" /> <xsl:variable name="text"> <xsl:call-template 
+		name="Reg"> <xsl:with-param name="code" select="$code" /> </xsl:call-template> </xsl:variable> <xsl:call-template name="TextBox"> 
+		<xsl:with-param name="val" select="$text" /> <xsl:with-param name="siz" select="$siz" /> </xsl:call-template> </xsl:template> 
+		<xsl:template name="PackBox"> <xsl:param name="code" /> <xsl:param name="siz" /> <xsl:variable name="text"> <xsl:call-template 
+		name="Pack"> <xsl:with-param name="code" select="$code" /> </xsl:call-template> </xsl:variable> <xsl:call-template name="TextBox"> 
+		<xsl:with-param name="val" select="$text" /> <xsl:with-param name="siz" select="$siz" /> </xsl:call-template> </xsl:template> 
+		<xsl:template name="DocBox"> <xsl:param name="code" /> <xsl:param name="siz" /> <xsl:variable name="text"> <xsl:call-template 
+		name="Doc"> <xsl:with-param name="code" select="$code" /> </xsl:call-template> </xsl:variable> <xsl:call-template name="TextBox"> 
+		<xsl:with-param name="val" select="$text" /> <xsl:with-param name="siz" select="$siz" /> </xsl:call-template> </xsl:template> 
+		<xsl:template name="ControlStageBox"> <xsl:param name="code" /> <xsl:param name="siz" /> <xsl:param name="comment" /> <xsl:variable 
+		name="text"> <xsl:call-template name="ControlStage"> <xsl:with-param name="code" select="$code" /> </xsl:call-template> </xsl:variable> 
+		<xsl:variable name="text1"> <xsl:choose> <xsl:when test="$comment!=''"> <xsl:value-of select="concat($text, concat(' - ',$comment))" 
+		/> </xsl:when> <xsl:otherwise> <xsl:value-of select="$text" /> </xsl:otherwise> </xsl:choose> </xsl:variable> <xsl:call-template 
+		name="TextBox"> <xsl:with-param name="val" select="$text1" /> <xsl:with-param name="siz" select="$siz" /> </xsl:call-template> 
+		</xsl:template> -->
 	<xsl:template name="Picture">
 		<xsl:param name="src" />
 		<xsl:param name="pos" />
@@ -575,8 +516,7 @@
             <xsl:text>,</xsl:text>
             <xsl:value-of select="$pos2" />
             <xsl:text>,"</xsl:text>
-            <xsl:value-of
-						select="translate($Name,'\','/')" />
+            <xsl:value-of select="translate($Name,'\','/')" />
             <xsl:text>")</xsl:text>
           </xsl:attribute>
 					<span>
@@ -617,12 +557,10 @@
 					<p>
 						<img>
 							<xsl:attribute name="src">
-                <xsl:value-of
-								select="concat($path,translate($Name,'\','/'))" />
+                <xsl:value-of select="concat($path,translate($Name,'\','/'))" />
               </xsl:attribute>
 							<xsl:attribute name="alt">
-                <xsl:value-of
-								select="concat($path,translate($Name,'\','/'))" />
+                <xsl:value-of select="concat($path,translate($Name,'\','/'))" />
               </xsl:attribute>
 							<xsl:attribute name="width">
                 <xsl:value-of select="$TableWidth" />
@@ -634,7 +572,7 @@
 			</tr>
 		</xsl:if>
 	</xsl:template>
-
+<!--
 	<xsl:template name="Main_First">
 		<xsl:param name="X1" />
 		<xsl:param name="X2" />
@@ -732,7 +670,7 @@
 			</xsl:if>
 		</table>
 	</xsl:template>
-
+-->
 	<!-- Кадастровый учет -->
 	<xsl:template match="//Title|gkn:Title">
 		<tr>
@@ -746,8 +684,7 @@
 			<td>
 				<table style="width:100%">
 					<xsl:call-template name="Table4" />
-					<xsl:if
-						test="Organization_OKU_BTI/Name_OKU!='' or Executive/FIO!='' or gkn:RecipientName!=''">
+					<xsl:if test="Organization_OKU_BTI/Name_OKU!='' or Executive/FIO!='' or gkn:RecipientName!=''">
 						<tr>
 							<td colspan="4">
 								<span style="font-weight:bold">
@@ -766,8 +703,7 @@
 							<td colspan="3">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="gkn:RecipientType" />
+									<xsl:with-param name="val" select="gkn:RecipientType" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -782,8 +718,7 @@
 							<td colspan="3">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="gkn:RecipientName" />
+									<xsl:with-param name="val" select="gkn:RecipientName" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -798,14 +733,12 @@
 							<td colspan="3">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="Organization_OKU_BTI/Name_OKU" />
+									<xsl:with-param name="val" select="Organization_OKU_BTI/Name_OKU" />
 								</xsl:call-template>
 							</td>
 						</tr>
 					</xsl:if>
-					<xsl:if
-						test="Organization_OKU_BTI/INN_OKU!='' or Organization_OKU_BTI/KPP_OKU!=''">
+					<xsl:if test="Organization_OKU_BTI/INN_OKU!='' or Organization_OKU_BTI/KPP_OKU!=''">
 						<tr>
 							<td>
 								<span>
@@ -815,8 +748,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Organization_OKU_BTI/INN_OKU" />
+									<xsl:with-param name="val" select="Organization_OKU_BTI/INN_OKU" />
 								</xsl:call-template>
 							</td>
 							<td>
@@ -827,14 +759,12 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Organization_OKU_BTI/KPP_OKU" />
+									<xsl:with-param name="val" select="Organization_OKU_BTI/KPP_OKU" />
 								</xsl:call-template>
 							</td>
 						</tr>
 					</xsl:if>
-					<xsl:if
-						test="Organization_OKU_BTI/OGRN_OKU!='' or Organization_OKU_BTI/Cod_OKU!=''">
+					<xsl:if test="Organization_OKU_BTI/OGRN_OKU!='' or Organization_OKU_BTI/Cod_OKU!=''">
 						<tr>
 							<td>
 								<span>
@@ -844,8 +774,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Organization_OKU_BTI/OGRN_OKU!=''" />
+									<xsl:with-param name="val" select="Organization_OKU_BTI/OGRN_OKU!=''" />
 								</xsl:call-template>
 							</td>
 							<td>
@@ -856,8 +785,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Organization_OKU_BTI/Cod_OKU" />
+									<xsl:with-param name="val" select="Organization_OKU_BTI/Cod_OKU" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -872,14 +800,12 @@
 							<td colspan="3">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="Organization_RR/Name_RR" />
+									<xsl:with-param name="val" select="Organization_RR/Name_RR" />
 								</xsl:call-template>
 							</td>
 						</tr>
 					</xsl:if>
-					<xsl:if
-						test="Organization_RR/OGRN_RR!='' or Organization_RR/Code_RR!=''">
+					<xsl:if test="Organization_RR/OGRN_RR!='' or Organization_RR/Code_RR!=''">
 						<tr>
 							<td>
 								<span>
@@ -889,8 +815,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Organization_RR/OGRN_RR" />
+									<xsl:with-param name="val" select="Organization_RR/OGRN_RR" />
 								</xsl:call-template>
 							</td>
 							<td>
@@ -901,14 +826,12 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Organization_RR/Code_RR" />
+									<xsl:with-param name="val" select="Organization_RR/Code_RR" />
 								</xsl:call-template>
 							</td>
 						</tr>
 					</xsl:if>
-					<xsl:if
-						test="Organization_RR/KPP_RR!='' or Organization_RR/INN_RR!=''">
+					<xsl:if test="Organization_RR/KPP_RR!='' or Organization_RR/INN_RR!=''">
 						<tr>
 							<td>
 								<span>
@@ -918,8 +841,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Organization_RR/INN_RR" />
+									<xsl:with-param name="val" select="Organization_RR/INN_RR" />
 								</xsl:call-template>
 							</td>
 							<td>
@@ -930,14 +852,12 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Organization_RR/KPP_RR" />
+									<xsl:with-param name="val" select="Organization_RR/KPP_RR" />
 								</xsl:call-template>
 							</td>
 						</tr>
 					</xsl:if>
-					<xsl:if
-						test="Executive/FIO/Surname!='' or Executive/FIO/First!=''">
+					<xsl:if test="Executive/FIO/Surname!='' or Executive/FIO/First!=''">
 						<tr>
 							<td>
 								<span>
@@ -947,8 +867,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Executive/FIO/Surname" />
+									<xsl:with-param name="val" select="Executive/FIO/Surname" />
 								</xsl:call-template>
 							</td>
 							<td>
@@ -959,14 +878,12 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Executive/FIO/First" />
+									<xsl:with-param name="val" select="Executive/FIO/First" />
 								</xsl:call-template>
 							</td>
 						</tr>
 					</xsl:if>
-					<xsl:if
-						test="Executive/FIO/Patronymic!='' or Executive/Appointment!=''">
+					<xsl:if test="Executive/FIO/Patronymic!='' or Executive/Appointment!=''">
 						<tr>
 							<td>
 								<span>
@@ -976,8 +893,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Executive/FIO/Patronymic" />
+									<xsl:with-param name="val" select="Executive/FIO/Patronymic" />
 								</xsl:call-template>
 							</td>
 							<td>
@@ -988,8 +904,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Executive/Appointment" />
+									<xsl:with-param name="val" select="Executive/Appointment" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -1004,15 +919,13 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Executive/Telephone" />
+									<xsl:with-param name="val" select="Executive/Telephone" />
 								</xsl:call-template>
 							</td>
 						</tr>
 					</xsl:if>
-					<!--xsl:if test="Rubric/Name!='' or Rubric/Code!='' or Rubric/Method!=''"> 
-						<tr> <td colspan="4"> <span style="font-weight:bold"> <xsl:text>Заявление</xsl:text> 
-						</span> </td> </tr> </xsl:if -->
+					<!--xsl:if test="Rubric/Name!='' or Rubric/Code!='' or Rubric/Method!=''"> <tr> <td colspan="4"> <span style="font-weight:bold"> 
+						<xsl:text>Заявление</xsl:text> </span> </td> </tr> </xsl:if -->
 					<xsl:if test="Rubric/Name!=''">
 						<tr>
 							<td>
@@ -1057,8 +970,7 @@
 							<td colspan="3">
 								<xsl:call-template name="DictBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="Rubric/Method" />
+									<xsl:with-param name="val" select="Rubric/Method" />
 									<xsl:with-param name="dic">
 										<xsl:call-template name="dMethod" />
 									</xsl:with-param>
@@ -1076,8 +988,7 @@
 							<td colspan="3">
 								<xsl:call-template name="DictBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="Rubric/Visit_Purpose" />
+									<xsl:with-param name="val" select="Rubric/Visit_Purpose" />
 									<xsl:with-param name="dic">
 										<xsl:call-template name="dAction" />
 									</xsl:with-param>
@@ -1096,8 +1007,7 @@
 								<td>
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="25" />
-										<xsl:with-param name="val"
-											select="Rubric/Number" />
+										<xsl:with-param name="val" select="Rubric/Number" />
 									</xsl:call-template>
 								</td>
 							</xsl:if>
@@ -1129,14 +1039,12 @@
 										<xsl:call-template name="dRequest_Type" />
 									</xsl:with-param>
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="Rubric/ReqType" />
+									<xsl:with-param name="val" select="Rubric/ReqType" />
 								</xsl:call-template>
 							</td>
 						</tr>
 					</xsl:if>
-					<xsl:if
-						test="Rubric/Number_Request!='' or Rubric/Date_Request!=''">
+					<xsl:if test="Rubric/Number_Request!='' or Rubric/Date_Request!=''">
 						<tr>
 							<xsl:if test="Rubric/Number_Request">
 								<td>
@@ -1147,8 +1055,7 @@
 								<td>
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="25" />
-										<xsl:with-param name="val"
-											select="Rubric/Number_Request" />
+										<xsl:with-param name="val" select="Rubric/Number_Request" />
 									</xsl:call-template>
 								</td>
 							</xsl:if>
@@ -1161,8 +1068,7 @@
 								<td>
 									<xsl:call-template name="DateBox">
 										<xsl:with-param name="siz" select="25" />
-										<xsl:with-param name="val"
-											select="Rubric/Date_Request" />
+										<xsl:with-param name="val" select="Rubric/Date_Request" />
 									</xsl:call-template>
 								</td>
 							</xsl:if>
@@ -1175,8 +1081,7 @@
 									<xsl:text>Текст</xsl:text>
 								</div>
 								<xsl:call-template name="Textarea">
-									<xsl:with-param name="text"
-										select="Rubric/Request_Text" />
+									<xsl:with-param name="text" select="Rubric/Request_Text" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -1186,8 +1091,7 @@
 		</tr>
 	</xsl:template>
 
-	<xsl:template
-		match="//Declarants/Declarant|//Request[Declarant]|gkn:Declarant"
+	<xsl:template match="//Declarants/Declarant|//Request[Declarant]|gkn:Declarant"
 		xmlns:gkn="urn://x-artefacts-rosreestr-gov-ru/requests/gkn/3.0.9"
 		xmlns:del="urn://x-artefacts-rosreestr-ru/commons/complex-types/delivery/1.1.1">
 		<xsl:param name="pos" />
@@ -1215,16 +1119,14 @@
 								<td colspan="3">
 									<xsl:call-template name="DictBox">
 										<xsl:with-param name="siz" select="75" />
-										<xsl:with-param name="val"
-											select="@declarantKind" />
+										<xsl:with-param name="val" select="@declarantKind" />
 										<xsl:with-param name="dic">
 											<xsl:choose>
 												<xsl:when test="$DocumentVersion='RequestReestr'">
 													<xsl:call-template name="dDeclarantKind" />
 												</xsl:when>
 												<xsl:otherwise>
-													<xsl:call-template
-														name="dDeclarantKindOKS" />
+													<xsl:call-template name="dDeclarantKindOKS" />
 												</xsl:otherwise>
 											</xsl:choose>
 										</xsl:with-param>
@@ -1242,8 +1144,7 @@
 								<td colspan="2">
 									<xsl:call-template name="DictBox">
 										<xsl:with-param name="siz" select="50" />
-										<xsl:with-param name="val"
-											select="//gkn:Delivery/del:OKU" />
+										<xsl:with-param name="val" select="//gkn:Delivery/del:OKU" />
 										<xsl:with-param name="dic">
 											<xsl:call-template name="dWayReception" />
 										</xsl:with-param>
@@ -1261,8 +1162,7 @@
 								<td colspan="2">
 									<xsl:call-template name="DictBox">
 										<xsl:with-param name="siz" select="50" />
-										<xsl:with-param name="val"
-											select="//gkn:Delivery/del:AddressMFC" />
+										<xsl:with-param name="val" select="//gkn:Delivery/del:AddressMFC" />
 										<xsl:with-param name="dic">
 											<xsl:call-template name="sRecipient" />
 										</xsl:with-param>
@@ -1280,8 +1180,7 @@
 								<td colspan="3">
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="75" />
-										<xsl:with-param name="val"
-											select="//gkn:Delivery/del:PostAddress" />
+										<xsl:with-param name="val" select="//gkn:Delivery/del:PostAddress" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -1296,8 +1195,7 @@
 								<td colspan="2">
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="50" />
-										<xsl:with-param name="val"
-											select="gkn:Delivery/del:PostAddress" />
+										<xsl:with-param name="val" select="gkn:Delivery/del:PostAddress" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -1312,14 +1210,12 @@
 								<td colspan="2">
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="50" />
-										<xsl:with-param name="val"
-											select="//gkn:Delivery/del:OKU" />
+										<xsl:with-param name="val" select="//gkn:Delivery/del:OKU" />
 									</xsl:call-template>
 								</td>
 							</tr>
 						</xsl:if>
-						<xsl:if
-							test="//gkn:Delivery/del:OKU|//gkn:Delivery/del:PostAddress|//gkn:Delivery/del:LinkE_mail">
+						<xsl:if test="//gkn:Delivery/del:OKU|//gkn:Delivery/del:PostAddress|//gkn:Delivery/del:LinkE_mail">
 							<tr>
 								<td colspan="2">
 									<span>
@@ -1356,8 +1252,7 @@
 								<td colspan="2">
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="50" />
-										<xsl:with-param name="val"
-											select="../Delivery/NameOKU" />
+										<xsl:with-param name="val" select="../Delivery/NameOKU" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -1372,15 +1267,13 @@
 								<td colspan="2">
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="50" />
-										<xsl:with-param name="val"
-											select="../Delivery/PostAddress" />
+										<xsl:with-param name="val" select="../Delivery/PostAddress" />
 									</xsl:call-template>
 								</td>
 							</tr>
 						</xsl:if>
 						<tr>
-							<td colspan="4"
-								xmlns:gen="urn://x-artefacts-rosreestr-ru/commons/complex-types/general-gkn/1.0.2">
+							<td colspan="4" xmlns:gen="urn://x-artefacts-rosreestr-ru/commons/complex-types/general-gkn/1.0.2">
 								<span style="font-weight:bold">
 									<xsl:choose>
 										<xsl:when test="gen:Person">
@@ -1399,8 +1292,7 @@
 								</span>
 							</td>
 						</tr>
-						<xsl:for-each
-							select="//gkn:Declarant/gen:Organization"
+						<xsl:for-each select="//gkn:Declarant/gen:Organization"
 							xmlns:org2="urn://x-artefacts-rosreestr-ru/commons/complex-types/organization/2.0.1"
 							xmlns:loc2="urn://x-artefacts-rosreestr-ru/commons/complex-types/address-input/4.0.1">
 							<xsl:if test="org2:Name!=''">
@@ -1428,8 +1320,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="org2:RegDate" />
+											<xsl:with-param name="val" select="org2:RegDate" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1466,8 +1357,7 @@
 									<td colspan="3">
 										<xsl:call-template name="DictBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="org2:Location/loc2:Region" />
+											<xsl:with-param name="val" select="org2:Location/loc2:Region" />
 											<xsl:with-param name="dic">
 												<xsl:call-template name="Location" />
 											</xsl:with-param>
@@ -1485,8 +1375,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="org2:Location/loc2:Note" />
+											<xsl:with-param name="val" select="org2:Location/loc2:Note" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1525,8 +1414,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="org2:Telephone" />
+											<xsl:with-param name="val" select="org2:Telephone" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1560,14 +1448,12 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="gov2:GovernanceCode" />
+											<xsl:with-param name="val" select="gov2:GovernanceCode" />
 										</xsl:call-template>
 									</td>
 								</tr>
 							</xsl:if>
-							<xsl:if
-								test="//gov2:Location/loc2:Region!='' or //gov2:Location/loc2:Note!=''">
+							<xsl:if test="//gov2:Location/loc2:Region!='' or //gov2:Location/loc2:Note!=''">
 								<tr>
 									<td>
 										<span style="font-weight:bold">
@@ -1586,8 +1472,7 @@
 									<td colspan="3">
 										<xsl:call-template name="DictBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="gov2:Location/loc2:Region" />
+											<xsl:with-param name="val" select="gov2:Location/loc2:Region" />
 											<xsl:with-param name="dic">
 												<xsl:call-template name="Location" />
 											</xsl:with-param>
@@ -1605,8 +1490,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="gov2:Location/loc2:Note" />
+											<xsl:with-param name="val" select="gov2:Location/loc2:Note" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1645,8 +1529,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="gov2:Telephone" />
+											<xsl:with-param name="val" select="gov2:Telephone" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1665,8 +1548,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="fio:FamilyName" />
+											<xsl:with-param name="val" select="fio:FamilyName" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1681,8 +1563,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="fio:FirstName" />
+											<xsl:with-param name="val" select="fio:FirstName" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1697,8 +1578,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="fio:Patronymic" />
+											<xsl:with-param name="val" select="fio:Patronymic" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1720,8 +1600,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="fl2:Document/fl2:CodeDocument" />
+											<xsl:with-param name="val" select="fl2:Document/fl2:CodeDocument" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1736,8 +1615,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="fl2:Document/fl2:Series" />
+											<xsl:with-param name="val" select="fl2:Document/fl2:Series" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1752,8 +1630,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="fl2:Document/fl2:Number" />
+											<xsl:with-param name="val" select="fl2:Document/fl2:Number" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1768,8 +1645,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="fl2:Document/fl2:Date" />
+											<xsl:with-param name="val" select="fl2:Document/fl2:Date" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1784,8 +1660,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="fl2:Document/fl2:IssueOrgan" />
+											<xsl:with-param name="val" select="fl2:Document/fl2:IssueOrgan" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1824,8 +1699,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="fl2:Telephone" />
+											<xsl:with-param name="val" select="fl2:Telephone" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -1873,8 +1747,7 @@
 							<td colspan="3">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="fio:FamilyName" />
+									<xsl:with-param name="val" select="fio:FamilyName" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -1889,8 +1762,7 @@
 							<td colspan="3">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="fio:FirstName" />
+									<xsl:with-param name="val" select="fio:FirstName" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -1905,8 +1777,7 @@
 							<td colspan="3">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="fio:Patronymic" />
+									<xsl:with-param name="val" select="fio:Patronymic" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -1928,8 +1799,7 @@
 							<td colspan="3">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="fl2:Document/fl2:CodeDocument" />
+									<xsl:with-param name="val" select="fl2:Document/fl2:CodeDocument" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -1944,8 +1814,7 @@
 							<td colspan="3">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="fl2:Document/fl2:Series" />
+									<xsl:with-param name="val" select="fl2:Document/fl2:Series" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -1960,8 +1829,7 @@
 							<td colspan="3">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="fl2:Document/fl2:Number" />
+									<xsl:with-param name="val" select="fl2:Document/fl2:Number" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -1976,8 +1844,7 @@
 							<td colspan="3">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="fl2:Document/fl2:Date" />
+									<xsl:with-param name="val" select="fl2:Document/fl2:Date" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -1992,8 +1859,7 @@
 							<td colspan="3">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="fl2:Document/fl2:IssueOrgan" />
+									<xsl:with-param name="val" select="fl2:Document/fl2:IssueOrgan" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -2032,8 +1898,7 @@
 							<td colspan="3">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="fl2:Telephone" />
+									<xsl:with-param name="val" select="fl2:Telephone" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -2043,8 +1908,7 @@
 		</tr>
 	</xsl:template>
 
-	<xsl:template
-		match="gkn:AppliedDocuments/gkn:AppliedDocument"
+	<xsl:template match="gkn:AppliedDocuments/gkn:AppliedDocument"
 		xmlns:doc2="urn://x-artefacts-rosreestr-ru/commons/complex-types/document/4.0.3">
 		<xsl:param name="pos" />
 		<xsl:param name="part" />
@@ -2070,8 +1934,7 @@
 							<td colspan="3">
 								<xsl:call-template name="DictBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="doc2:CodeDocument" />
+									<xsl:with-param name="val" select="doc2:CodeDocument" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -2131,8 +1994,7 @@
 							<td colspan="3">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="doc2:IssueOrgan" />
+									<xsl:with-param name="val" select="doc2:IssueOrgan" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -2172,8 +2034,7 @@
 		</tr>
 	</xsl:template>
 
-	<xsl:template
-		match="gkn:PaymentDocuments/gkn:PaymentDocument"
+	<xsl:template match="gkn:PaymentDocuments/gkn:PaymentDocument"
 		xmlns:pay="urn://x-artefacts-rosreestr-ru/commons/complex-types/pay-document/1.1.2">
 		<xsl:param name="pos" />
 		<xsl:param name="part" />
@@ -2255,8 +2116,7 @@
 				<td colspan="3">
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="75" />
-						<xsl:with-param name="val"
-							select="pay:SettlementAccount" />
+						<xsl:with-param name="val" select="pay:SettlementAccount" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -2308,8 +2168,7 @@
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template name="Person"
-		xmlns:fio="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1"
+	<xsl:template name="Person" xmlns:fio="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1"
 		xmlns:fl2="urn://x-artefacts-rosreestr-ru/commons/complex-types/person/2.0.1">
 		<xsl:param name="pos" />
 		<xsl:param name="part" />
@@ -2527,8 +2386,7 @@
 				<xsl:with-param name="pos2" select="$pos2" />
 			</xsl:call-template>
 		</xsl:for-each>
-		<xsl:for-each
-			select="Location|LocationPermanent|LocationTemporary">
+		<xsl:for-each select="Location|LocationPermanent|LocationTemporary">
 			<tr>
 				<td colspan="4">
 					<span style="font-weight:bold">
@@ -2550,8 +2408,7 @@
 				</td>
 			</tr>
 			<xsl:choose>
-				<xsl:when
-					test="$DocumentVersion='Request17' or $DocumentVersion='RequestGRP'">
+				<xsl:when test="$DocumentVersion='Request17' or $DocumentVersion='RequestGRP'">
 					<tr>
 						<td colspan="4">
 							<xsl:call-template name="Location17">
@@ -2581,8 +2438,7 @@
 			</tr>
 			<tr>
 				<xsl:choose>
-					<xsl:when
-						test="$DocumentVersion='Request17' or $DocumentVersion='RequestGRP'">
+					<xsl:when test="$DocumentVersion='Request17' or $DocumentVersion='RequestGRP'">
 						<tr>
 							<td colspan="4">
 								<xsl:call-template name="Location17">
@@ -2628,8 +2484,7 @@
 				</xsl:for-each>
 			</xsl:when>
 			<xsl:when test="Organization">
-				<xsl:if
-					test="Organization/Name!='' and Organization/Code_OPF!=''">
+				<xsl:if test="Organization/Name!='' and Organization/Code_OPF!=''">
 					<tr>
 						<td>
 							<span>
@@ -2639,8 +2494,7 @@
 						<td>
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="25" />
-								<xsl:with-param name="val"
-									select="Organization/Name" />
+								<xsl:with-param name="val" select="Organization/Name" />
 							</xsl:call-template>
 						</td>
 						<td>
@@ -2661,14 +2515,12 @@
 									</xsl:choose>
 								</xsl:with-param>
 								<xsl:with-param name="siz" select="25" />
-								<xsl:with-param name="val"
-									select="Organization/Code_OPF" />
+								<xsl:with-param name="val" select="Organization/Code_OPF" />
 							</xsl:call-template>
 						</td>
 					</tr>
 				</xsl:if>
-				<xsl:if
-					test="Organization/Name!='' and (not (Organization/Code_OPF) or Organization/Code_OPF='')">
+				<xsl:if test="Organization/Name!='' and (not (Organization/Code_OPF) or Organization/Code_OPF='')">
 					<tr>
 						<td>
 							<span>
@@ -2678,14 +2530,12 @@
 						<td colspan="3">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="75" />
-								<xsl:with-param name="val"
-									select="Organization/Name" />
+								<xsl:with-param name="val" select="Organization/Name" />
 							</xsl:call-template>
 						</td>
 					</tr>
 				</xsl:if>
-				<xsl:if
-					test="Organization/INN!='' or Organization/Code_CPP!=''">
+				<xsl:if test="Organization/INN!='' or Organization/Code_CPP!=''">
 					<tr>
 						<td>
 							<span>
@@ -2695,8 +2545,7 @@
 						<td>
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="25" />
-								<xsl:with-param name="val"
-									select="Organization/INN" />
+								<xsl:with-param name="val" select="Organization/INN" />
 							</xsl:call-template>
 						</td>
 						<td>
@@ -2707,14 +2556,12 @@
 						<td>
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="25" />
-								<xsl:with-param name="val"
-									select="Organization/Code_CPP" />
+								<xsl:with-param name="val" select="Organization/Code_CPP" />
 							</xsl:call-template>
 						</td>
 					</tr>
 				</xsl:if>
-				<xsl:if
-					test="Organization/Code_OGRN!='' or Organization/E-mail!=''">
+				<xsl:if test="Organization/Code_OGRN!='' or Organization/E-mail!=''">
 					<tr>
 						<td>
 							<span>
@@ -2724,8 +2571,7 @@
 						<td>
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="25" />
-								<xsl:with-param name="val"
-									select="Organization/Code_OGRN" />
+								<xsl:with-param name="val" select="Organization/Code_OGRN" />
 							</xsl:call-template>
 						</td>
 						<td>
@@ -2736,14 +2582,12 @@
 						<td>
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="25" />
-								<xsl:with-param name="val"
-									select="Organization/E-mail" />
+								<xsl:with-param name="val" select="Organization/E-mail" />
 							</xsl:call-template>
 						</td>
 					</tr>
 				</xsl:if>
-				<xsl:if
-					test="Organization/Phone!='' or Organization/Country!=''">
+				<xsl:if test="Organization/Phone!='' or Organization/Country!=''">
 					<tr>
 						<td>
 							<span>
@@ -2753,8 +2597,7 @@
 						<td>
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="25" />
-								<xsl:with-param name="val"
-									select="Organization/Phone" />
+								<xsl:with-param name="val" select="Organization/Phone" />
 							</xsl:call-template>
 						</td>
 						<td>
@@ -2765,8 +2608,7 @@
 						<td>
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="25" />
-								<xsl:with-param name="val"
-									select="Organization/Country" />
+								<xsl:with-param name="val" select="Organization/Country" />
 							</xsl:call-template>
 						</td>
 					</tr>
@@ -2781,8 +2623,7 @@
 						<td colspan="3">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="75" />
-								<xsl:with-param name="val"
-									select="Organization/Contact_Info" />
+								<xsl:with-param name="val" select="Organization/Contact_Info" />
 							</xsl:call-template>
 						</td>
 					</tr>
@@ -2813,8 +2654,7 @@
 						</td>
 					</tr>
 					<xsl:choose>
-						<xsl:when
-							test="$DocumentVersion='Request17' or $DocumentVersion='RequestGRP'">
+						<xsl:when test="$DocumentVersion='Request17' or $DocumentVersion='RequestGRP'">
 							<tr>
 								<td colspan="4">
 									<xsl:call-template name="Location17">
@@ -2843,8 +2683,7 @@
 						</td>
 					</tr>
 					<xsl:choose>
-						<xsl:when
-							test="$DocumentVersion='Request17' or $DocumentVersion='RequestGRP'">
+						<xsl:when test="$DocumentVersion='Request17' or $DocumentVersion='RequestGRP'">
 							<tr>
 								<td colspan="4">
 									<xsl:call-template name="Location17">
@@ -2876,8 +2715,7 @@
 						<td colspan="2">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="50" />
-								<xsl:with-param name="val"
-									select="Governance/Name" />
+								<xsl:with-param name="val" select="Governance/Name" />
 							</xsl:call-template>
 						</td>
 					</tr>
@@ -2892,8 +2730,7 @@
 						<td colspan="3">
 							<xsl:call-template name="DictBox">
 								<xsl:with-param name="siz" select="75" />
-								<xsl:with-param name="val"
-									select="Governance/Governance_Code" />
+								<xsl:with-param name="val" select="Governance/Governance_Code" />
 								<xsl:with-param name="dic">
 									<xsl:call-template name="dGovernance_Code" />
 								</xsl:with-param>
@@ -2911,8 +2748,7 @@
 						<td colspan="2">
 							<xsl:call-template name="DictBox">
 								<xsl:with-param name="siz" select="50" />
-								<xsl:with-param name="val"
-									select="Governance/GovernanceCod" />
+								<xsl:with-param name="val" select="Governance/GovernanceCod" />
 								<xsl:with-param name="dic">
 									<xsl:call-template name="dGovernance" />
 								</xsl:with-param>
@@ -2930,8 +2766,7 @@
 						<td>
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="25" />
-								<xsl:with-param name="val"
-									select="Governance/RegNumber" />
+								<xsl:with-param name="val" select="Governance/RegNumber" />
 							</xsl:call-template>
 						</td>
 						<td>
@@ -2942,14 +2777,12 @@
 						<td>
 							<xsl:call-template name="DateBox">
 								<xsl:with-param name="siz" select="25" />
-								<xsl:with-param name="val"
-									select="Governance/RegDate" />
+								<xsl:with-param name="val" select="Governance/RegDate" />
 							</xsl:call-template>
 						</td>
 					</tr>
 				</xsl:if>
-				<xsl:if
-					test="Governance/Country and (Governance/Country)!='Country0'">
+				<xsl:if test="Governance/Country and (Governance/Country)!='Country0'">
 					<tr>
 						<td>
 							<span>
@@ -2959,8 +2792,7 @@
 						<td colspan="3">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="75" />
-								<xsl:with-param name="val"
-									select="Governance/Country" />
+								<xsl:with-param name="val" select="Governance/Country" />
 							</xsl:call-template>
 						</td>
 					</tr>
@@ -2975,8 +2807,7 @@
 						<td colspan="3">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="75" />
-								<xsl:with-param name="val"
-									select="Governance/Address" />
+								<xsl:with-param name="val" select="Governance/Address" />
 							</xsl:call-template>
 						</td>
 					</tr>
@@ -2991,8 +2822,7 @@
 						<td>
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="25" />
-								<xsl:with-param name="val"
-									select="Governance/E-mail" />
+								<xsl:with-param name="val" select="Governance/E-mail" />
 							</xsl:call-template>
 						</td>
 						<td>
@@ -3003,8 +2833,7 @@
 						<td>
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="25" />
-								<xsl:with-param name="val"
-									select="Governance/Phone" />
+								<xsl:with-param name="val" select="Governance/Phone" />
 							</xsl:call-template>
 						</td>
 					</tr>
@@ -3019,8 +2848,7 @@
 						<td colspan="3">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="75" />
-								<xsl:with-param name="val"
-									select="Governance/Contact_Info" />
+								<xsl:with-param name="val" select="Governance/Contact_Info" />
 							</xsl:call-template>
 						</td>
 					</tr>
@@ -3035,8 +2863,7 @@
 						<td colspan="2">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="50" />
-								<xsl:with-param name="val"
-									select="Governance/OKATO_Code" />
+								<xsl:with-param name="val" select="Governance/OKATO_Code" />
 							</xsl:call-template>
 						</td>
 					</tr>
@@ -3094,8 +2921,7 @@
 									<xsl:call-template name="dDocuments" />
 								</xsl:with-param>
 								<xsl:with-param name="siz" select="75" />
-								<xsl:with-param name="val"
-									select="Type_Registration" />
+								<xsl:with-param name="val" select="Type_Registration" />
 							</xsl:call-template>
 						</xsl:when>
 						<xsl:when test="Type_Specification">
@@ -3104,8 +2930,7 @@
 									<xsl:call-template name="dSpecification" />
 								</xsl:with-param>
 								<xsl:with-param name="siz" select="75" />
-								<xsl:with-param name="val"
-									select="Type_Specification" />
+								<xsl:with-param name="val" select="Type_Specification" />
 							</xsl:call-template>
 						</xsl:when>
 						<xsl:when test="Parcel_File_Doc">
@@ -3114,8 +2939,7 @@
 									<xsl:call-template name="dParcel_File_Doc" />
 								</xsl:with-param>
 								<xsl:with-param name="siz" select="75" />
-								<xsl:with-param name="val"
-									select="Parcel_File_Doc" />
+								<xsl:with-param name="val" select="Parcel_File_Doc" />
 							</xsl:call-template>
 						</xsl:when>
 						<xsl:when test="Code_Document">
@@ -3277,8 +3101,7 @@
 				<td>
 					<xsl:call-template name="DateBox">
 						<xsl:with-param name="siz" select="25" />
-						<xsl:with-param name="val"
-							select="Duration/Started" />
+						<xsl:with-param name="val" select="Duration/Started" />
 					</xsl:call-template>
 				</td>
 				<td>
@@ -3289,8 +3112,7 @@
 				<td>
 					<xsl:call-template name="DateBox">
 						<xsl:with-param name="siz" select="25" />
-						<xsl:with-param name="val"
-							select="Duration/Stopped" />
+						<xsl:with-param name="val" select="Duration/Stopped" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -3310,8 +3132,7 @@
 				</td>
 			</tr>
 		</xsl:if>
-		<xsl:if
-			test="Quantity/@Original!='' or Quantity/@Original_Sheet!=''">
+		<xsl:if test="Quantity/@Original!='' or Quantity/@Original_Sheet!=''">
 			<tr>
 				<td>
 					<span>
@@ -3321,8 +3142,7 @@
 				<td>
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="25" />
-						<xsl:with-param name="val"
-							select="Quantity/@Original" />
+						<xsl:with-param name="val" select="Quantity/@Original" />
 					</xsl:call-template>
 				</td>
 				<td>
@@ -3333,8 +3153,7 @@
 				<td>
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="25" />
-						<xsl:with-param name="val"
-							select="Quantity/@Original_Sheet" />
+						<xsl:with-param name="val" select="Quantity/@Original_Sheet" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -3353,13 +3172,11 @@
 					</xsl:call-template>
 				</td>
 			</tr>
-			<!--xsl:choose> <xsl:when test="$part='!Print!'"> <xsl:call-template name="PictureInsert"> 
-				<xsl:with-param name="path" select="$path"/> </xsl:call-template> </xsl:when> 
-				<xsl:otherwise> <xsl:call-template name="ImageRef"> <xsl:with-param name="part" 
-				select="$part"/> <xsl:with-param name="type" select="$type"/> <xsl:with-param 
-				name="pos" select="$pos"/> <xsl:with-param name="pos0" select="$pos0"/> <xsl:with-param 
-				name="pos1" select="$pos1"/> <xsl:with-param name="pos2" select="$pos2"/> 
-				</xsl:call-template> </xsl:otherwise> </xsl:choose -->
+			<!--xsl:choose> <xsl:when test="$part='!Print!'"> <xsl:call-template name="PictureInsert"> <xsl:with-param name="path" 
+				select="$path"/> </xsl:call-template> </xsl:when> <xsl:otherwise> <xsl:call-template name="ImageRef"> <xsl:with-param name="part" 
+				select="$part"/> <xsl:with-param name="type" select="$type"/> <xsl:with-param name="pos" select="$pos"/> <xsl:with-param 
+				name="pos0" select="$pos0"/> <xsl:with-param name="pos1" select="$pos1"/> <xsl:with-param name="pos2" select="$pos2"/> </xsl:call-template> 
+				</xsl:otherwise> </xsl:choose -->
 		</xsl:for-each>
 	</xsl:template>
 
@@ -3430,8 +3247,7 @@
 				<xsl:when test="../../../../../../../../../../../Federal">
 					<xsl:value-of select="11" />
 				</xsl:when>
-				<xsl:when
-					test="../../../../../../../../../../../../../Federal">
+				<xsl:when test="../../../../../../../../../../../../../Federal">
 					<xsl:value-of select="13" />
 				</xsl:when>
 			</xsl:choose>
@@ -3442,16 +3258,13 @@
 					<xsl:value-of select="../../../../@CadastralNumber" />
 				</xsl:when>
 				<xsl:when test="$t=9">
-					<xsl:value-of
-						select="../../../../../../@CadastralNumber" />
+					<xsl:value-of select="../../../../../../@CadastralNumber" />
 				</xsl:when>
 				<xsl:when test="$t=11">
-					<xsl:value-of
-						select="../../../../../../../../@CadastralNumber" />
+					<xsl:value-of select="../../../../../../../../@CadastralNumber" />
 				</xsl:when>
 				<xsl:when test="$t=13">
-					<xsl:value-of
-						select="../../../../../../../../../../@CadastralNumber" />
+					<xsl:value-of select="../../../../../../../../../../@CadastralNumber" />
 				</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
@@ -3464,12 +3277,10 @@
 					<xsl:value-of select="../../../../@CadastralNumber" />
 				</xsl:when>
 				<xsl:when test="$t=11">
-					<xsl:value-of
-						select="../../../../../../@CadastralNumber" />
+					<xsl:value-of select="../../../../../../@CadastralNumber" />
 				</xsl:when>
 				<xsl:when test="$t=13">
-					<xsl:value-of
-						select="../../../../../../../../@CadastralNumber" />
+					<xsl:value-of select="../../../../../../../../@CadastralNumber" />
 				</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
@@ -3485,8 +3296,7 @@
 					<xsl:value-of select="../../../../@CadastralNumber" />
 				</xsl:when>
 				<xsl:when test="$t=13">
-					<xsl:value-of
-						select="../../../../../../@CadastralNumber" />
+					<xsl:value-of select="../../../../../../@CadastralNumber" />
 				</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
@@ -3555,8 +3365,7 @@
 					<td>
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="25" />
-							<xsl:with-param name="val"
-								select="../../Location/Code_OKATO" />
+							<xsl:with-param name="val" select="../../Location/Code_OKATO" />
 						</xsl:call-template>
 					</td>
 				</tr>
@@ -3612,8 +3421,7 @@
 					<td>
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="25" />
-							<xsl:with-param name="val"
-								select="../../@CadastralNumber" />
+							<xsl:with-param name="val" select="../../@CadastralNumber" />
 						</xsl:call-template>
 					</td>
 					<td>
@@ -3624,8 +3432,7 @@
 					<td>
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="25" />
-							<xsl:with-param name="val"
-								select="../../@Number_PP" />
+							<xsl:with-param name="val" select="../../@Number_PP" />
 						</xsl:call-template>
 					</td>
 				</tr>
@@ -3640,8 +3447,7 @@
 					<td>
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="25" />
-							<xsl:with-param name="val"
-								select="../../Area/@Total" />
+							<xsl:with-param name="val" select="../../Area/@Total" />
 						</xsl:call-template>
 					</td>
 					<td>
@@ -3652,8 +3458,7 @@
 					<td>
 						<xsl:call-template name="DictBox">
 							<xsl:with-param name="siz" select="25" />
-							<xsl:with-param name="val"
-								select="../../Area/@Unit" />
+							<xsl:with-param name="val" select="../../Area/@Unit" />
 							<xsl:with-param name="dic">
 								<xsl:call-template name="dUnit" />
 							</xsl:with-param>
@@ -3685,8 +3490,7 @@
 
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="$BlockCadastralNumber" />
+									<xsl:with-param name="val" select="$BlockCadastralNumber" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3782,8 +3586,7 @@
 								</xsl:choose>
 							</tr>
 						</xsl:if>
-						<xsl:if
-							test="Registration/OrgRegister!='' or Registration/RegNumber!=''">
+						<xsl:if test="Registration/OrgRegister!='' or Registration/RegNumber!=''">
 							<tr>
 								<td>
 									<span>
@@ -3793,8 +3596,7 @@
 								<td>
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="25" />
-										<xsl:with-param name="val"
-											select="Registration/OrgRegister" />
+										<xsl:with-param name="val" select="Registration/OrgRegister" />
 									</xsl:call-template>
 								</td>
 								<td>
@@ -3805,14 +3607,12 @@
 								<td>
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="25" />
-										<xsl:with-param name="val"
-											select="Registration/RegNumber" />
+										<xsl:with-param name="val" select="Registration/RegNumber" />
 									</xsl:call-template>
 								</td>
 							</tr>
 						</xsl:if>
-						<xsl:if
-							test="Registration/RegDate!='' or Registration/DateClose!=''">
+						<xsl:if test="Registration/RegDate!='' or Registration/DateClose!=''">
 							<tr>
 								<td>
 									<span>
@@ -3822,8 +3622,7 @@
 								<td>
 									<xsl:call-template name="DateBox">
 										<xsl:with-param name="siz" select="25" />
-										<xsl:with-param name="val"
-											select="Registration/RegDate" />
+										<xsl:with-param name="val" select="Registration/RegDate" />
 									</xsl:call-template>
 								</td>
 								<td>
@@ -3834,8 +3633,7 @@
 								<td>
 									<xsl:call-template name="DateBox">
 										<xsl:with-param name="siz" select="25" />
-										<xsl:with-param name="val"
-											select="Registration/DateClose" />
+										<xsl:with-param name="val" select="Registration/DateClose" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -3942,8 +3740,7 @@
 										<td colspan="3">
 											<xsl:call-template name="TextBox">
 												<xsl:with-param name="siz" select="75" />
-												<xsl:with-param name="val"
-													select="Contact_Adress" />
+												<xsl:with-param name="val" select="Contact_Adress" />
 											</xsl:call-template>
 										</td>
 									</tr>
@@ -3999,8 +3796,7 @@
 							<td colspan="3">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="AccountNumber" />
+									<xsl:with-param name="val" select="AccountNumber" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -4015,8 +3811,7 @@
 							<td colspan="3">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="CadastralNumberRestriction" />
+									<xsl:with-param name="val" select="CadastralNumberRestriction" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -4049,8 +3844,7 @@
 							<td>
 								<xsl:call-template name="DateBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Duration/Started" />
+									<xsl:with-param name="val" select="Duration/Started" />
 								</xsl:call-template>
 							</td>
 							<xsl:choose>
@@ -4063,8 +3857,7 @@
 									<td>
 										<xsl:call-template name="DateBox">
 											<xsl:with-param name="siz" select="25" />
-											<xsl:with-param name="val"
-												select="Duration/Stopped" />
+											<xsl:with-param name="val" select="Duration/Stopped" />
 										</xsl:call-template>
 									</td>
 								</xsl:when>
@@ -4077,8 +3870,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="25" />
-											<xsl:with-param name="val"
-												select="Duration/Term" />
+											<xsl:with-param name="val" select="Duration/Term" />
 										</xsl:call-template>
 									</td>
 								</xsl:otherwise>
@@ -4095,8 +3887,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Registration/OrgRegister" />
+									<xsl:with-param name="val" select="Registration/OrgRegister" />
 								</xsl:call-template>
 							</td>
 							<td>
@@ -4107,8 +3898,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Registration/RegNumber" />
+									<xsl:with-param name="val" select="Registration/RegNumber" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -4121,8 +3911,7 @@
 							<td>
 								<xsl:call-template name="DateBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Registration/RegDate" />
+									<xsl:with-param name="val" select="Registration/RegDate" />
 								</xsl:call-template>
 							</td>
 							<td>
@@ -4133,8 +3922,7 @@
 							<td>
 								<xsl:call-template name="DateBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Registration/DateClose" />
+									<xsl:with-param name="val" select="Registration/DateClose" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -4170,8 +3958,7 @@
 							<td colspan="4">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="100" />
-									<xsl:with-param name="val"
-										select="Owner_Restriction" />
+									<xsl:with-param name="val" select="Owner_Restriction" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -4188,8 +3975,7 @@
 							<td colspan="4">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="100" />
-									<xsl:with-param name="val"
-										select="CadastralNumber_Restriction" />
+									<xsl:with-param name="val" select="CadastralNumber_Restriction" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -4280,8 +4066,7 @@
 								<td>
 									<xsl:call-template name="DateBox">
 										<xsl:with-param name="siz" select="25" />
-										<xsl:with-param name="val"
-											select="Duration/Started" />
+										<xsl:with-param name="val" select="Duration/Started" />
 									</xsl:call-template>
 								</td>
 								<xsl:choose>
@@ -4294,8 +4079,7 @@
 										<td>
 											<xsl:call-template name="DateBox">
 												<xsl:with-param name="siz" select="25" />
-												<xsl:with-param name="val"
-													select="Duration/Stopped" />
+												<xsl:with-param name="val" select="Duration/Stopped" />
 											</xsl:call-template>
 										</td>
 									</xsl:when>
@@ -4308,8 +4092,7 @@
 										<td>
 											<xsl:call-template name="TextBox">
 												<xsl:with-param name="siz" select="25" />
-												<xsl:with-param name="val"
-													select="Duration/Term" />
+												<xsl:with-param name="val" select="Duration/Term" />
 											</xsl:call-template>
 										</td>
 									</xsl:otherwise>
@@ -4326,8 +4109,7 @@
 								<td>
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="25" />
-										<xsl:with-param name="val"
-											select="Registration/OrgRegister" />
+										<xsl:with-param name="val" select="Registration/OrgRegister" />
 									</xsl:call-template>
 								</td>
 								<td>
@@ -4338,8 +4120,7 @@
 								<td>
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="25" />
-										<xsl:with-param name="val"
-											select="Registration/RegNumber" />
+										<xsl:with-param name="val" select="Registration/RegNumber" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -4352,8 +4133,7 @@
 								<td>
 									<xsl:call-template name="DateBox">
 										<xsl:with-param name="siz" select="25" />
-										<xsl:with-param name="val"
-											select="Registration/RegDate" />
+										<xsl:with-param name="val" select="Registration/RegDate" />
 									</xsl:call-template>
 								</td>
 								<td>
@@ -4364,8 +4144,7 @@
 								<td>
 									<xsl:call-template name="DateBox">
 										<xsl:with-param name="siz" select="25" />
-										<xsl:with-param name="val"
-											select="Registration/DateClose" />
+										<xsl:with-param name="val" select="Registration/DateClose" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -4401,8 +4180,7 @@
 								<td colspan="4">
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="100" />
-										<xsl:with-param name="val"
-											select="Owner_Restriction" />
+										<xsl:with-param name="val" select="Owner_Restriction" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -4419,8 +4197,7 @@
 								<td colspan="4">
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="100" />
-										<xsl:with-param name="val"
-											select="CadastralNumber_Restriction" />
+										<xsl:with-param name="val" select="CadastralNumber_Restriction" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -4481,10 +4258,8 @@
 									<xsl:with-param name="siz" select="75" />
 									<xsl:with-param name="val">
 										<xsl:value-of select="@CadastralNumber" />
-										<xsl:value-of
-											select="NewSubParcel/CadastralNumber_Parcel" />
-										<xsl:value-of
-											select="ExistEZParcels/@CadastralNumber" />
+										<xsl:value-of select="NewSubParcel/CadastralNumber_Parcel" />
+										<xsl:value-of select="ExistEZParcels/@CadastralNumber" />
 									</xsl:with-param>
 								</xsl:call-template>
 							</td>
@@ -4500,8 +4275,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="@CadastralNumber" />
+									<xsl:with-param name="val" select="@CadastralNumber" />
 								</xsl:call-template>
 							</td>
 							<td>
@@ -4520,8 +4294,7 @@
 							</td>
 						</tr>
 					</xsl:if>
-					<xsl:if
-						test="@Name!='' or @Method!='' or (../@Method!='' and current()=../NewParcel)">
+					<xsl:if test="@Name!='' or @Method!='' or (../@Method!='' and current()=../NewParcel)">
 						<tr>
 							<td>
 								<span>
@@ -4596,8 +4369,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="25" />
-											<xsl:with-param name="val"
-												select="@Definition" />
+											<xsl:with-param name="val" select="@Definition" />
 										</xsl:call-template>
 									</td>
 									<td>
@@ -4608,8 +4380,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="25" />
-											<xsl:with-param name="val"
-												select="@AdditionalName" />
+											<xsl:with-param name="val" select="@AdditionalName" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -4624,8 +4395,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="@AdditionalName" />
+											<xsl:with-param name="val" select="@AdditionalName" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -4643,8 +4413,7 @@
 							<td colspan="3">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="Unified_Land_Unit/Preceding_Land_Unit" />
+									<xsl:with-param name="val" select="Unified_Land_Unit/Preceding_Land_Unit" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -4685,8 +4454,7 @@
 							<td colspan="3">
 								<xsl:call-template name="DateBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="@DateCreatedDoc" />
+									<xsl:with-param name="val" select="@DateCreatedDoc" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -4703,8 +4471,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="25" />
-											<xsl:with-param name="val"
-												select="Contactor/*" />
+											<xsl:with-param name="val" select="Contactor/*" />
 										</xsl:call-template>
 									</td>
 									<td>
@@ -4715,8 +4482,7 @@
 									<td>
 										<xsl:call-template name="DateBox">
 											<xsl:with-param name="siz" select="25" />
-											<xsl:with-param name="val"
-												select="Contactor/@Date" />
+											<xsl:with-param name="val" select="Contactor/@Date" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -4731,8 +4497,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="Contactor/*" />
+											<xsl:with-param name="val" select="Contactor/*" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -4749,8 +4514,7 @@
 							<td colspan="3">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="Contact_Adress" />
+									<xsl:with-param name="val" select="Contact_Adress" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -4780,8 +4544,7 @@
 							<td>
 								<xsl:call-template name="DateBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Сadastral_Record/DateRecord" />
+									<xsl:with-param name="val" select="Сadastral_Record/DateRecord" />
 								</xsl:call-template>
 							</td>
 							<td>
@@ -4792,8 +4555,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Сadastral_Record/Expert_Certified" />
+									<xsl:with-param name="val" select="Сadastral_Record/Expert_Certified" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -4877,8 +4639,7 @@
 								<td>
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="75" />
-										<xsl:with-param name="val"
-											select="@CadastralNumber" />
+										<xsl:with-param name="val" select="@CadastralNumber" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -4967,8 +4728,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="CadastralBlock" />
+									<xsl:with-param name="val" select="CadastralBlock" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -5045,8 +4805,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="75" />
-									<xsl:with-param name="val"
-										select="@CadastralNumber" />
+									<xsl:with-param name="val" select="@CadastralNumber" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -5097,8 +4856,7 @@
 								<td colspan="3">
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="75" />
-										<xsl:with-param name="val"
-											select="@CadastralNumber" />
+										<xsl:with-param name="val" select="@CadastralNumber" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -5138,8 +4896,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="ContactAddress" />
+											<xsl:with-param name="val" select="ContactAddress" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -5177,8 +4934,7 @@
 								<td colspan="4">
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="100" />
-										<xsl:with-param name="val"
-											select="Old_CadastralNumbers" />
+										<xsl:with-param name="val" select="Old_CadastralNumbers" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -5191,8 +4947,7 @@
 									</span>
 								</td>
 							</tr>
-							<xsl:for-each
-								select="Prev_CadastralNumbers/CadastralNumber">
+							<xsl:for-each select="Prev_CadastralNumbers/CadastralNumber">
 								<tr>
 									<td colspan="4">
 										<xsl:call-template name="TextBox">
@@ -5203,8 +4958,7 @@
 								</tr>
 							</xsl:for-each>
 						</xsl:if>
-						<xsl:if
-							test="Providing_Pass_CadastralNumbers/CadastralNumber!=''">
+						<xsl:if test="Providing_Pass_CadastralNumbers/CadastralNumber!=''">
 							<tr>
 								<td colspan="4">
 									<span>
@@ -5212,8 +4966,7 @@
 									</span>
 								</td>
 							</tr>
-							<xsl:for-each
-								select="Providing_Pass_CadastralNumbers/CadastralNumber">
+							<xsl:for-each select="Providing_Pass_CadastralNumbers/CadastralNumber">
 								<tr>
 									<td colspan="4">
 										<xsl:call-template name="TextBox">
@@ -5232,8 +4985,7 @@
 									</span>
 								</td>
 							</tr>
-							<xsl:for-each
-								select="Post_CadastralNumbers/CadastralNumber">
+							<xsl:for-each select="Post_CadastralNumbers/CadastralNumber">
 								<tr>
 									<td colspan="4">
 										<xsl:call-template name="TextBox">
@@ -5252,8 +5004,7 @@
 									</span>
 								</td>
 							</tr>
-							<xsl:for-each
-								select="all_CadastralNumbersNewParcel/CadastralNumber">
+							<xsl:for-each select="all_CadastralNumbersNewParcel/CadastralNumber">
 								<tr>
 									<td colspan="4">
 										<xsl:call-template name="TextBox">
@@ -5272,8 +5023,7 @@
 									</span>
 								</td>
 							</tr>
-							<xsl:for-each
-								select="CadastralNumbersTransformationParcel/CadastralNumber">
+							<xsl:for-each select="CadastralNumbersTransformationParcel/CadastralNumber">
 								<tr>
 									<td colspan="4">
 										<xsl:call-template name="TextBox">
@@ -5292,8 +5042,7 @@
 									</span>
 								</td>
 							</tr>
-							<xsl:for-each
-								select="CadastralNumbersRemoveParcel/CadastralNumber">
+							<xsl:for-each select="CadastralNumbersRemoveParcel/CadastralNumber">
 								<tr>
 									<td colspan="4">
 										<xsl:call-template name="TextBox">
@@ -5312,8 +5061,7 @@
 									</span>
 								</td>
 							</tr>
-							<xsl:for-each
-								select="Inner_CadastralNumbers/CadastralNumber">
+							<xsl:for-each select="Inner_CadastralNumbers/CadastralNumber">
 								<tr>
 									<td colspan="4">
 										<xsl:call-template name="TextBox">
@@ -5332,8 +5080,7 @@
 									</span>
 								</td>
 							</tr>
-							<xsl:for-each
-								select="DeleteEntryParcels/DeleteEntryParcel/@CadastralNumber">
+							<xsl:for-each select="DeleteEntryParcels/DeleteEntryParcel/@CadastralNumber">
 								<tr>
 									<td colspan="4">
 										<xsl:call-template name="TextBox">
@@ -5352,8 +5099,7 @@
 									</span>
 								</td>
 							</tr>
-							<xsl:for-each
-								select="InsertEntryParcels/InsertEntryParcel/@*">
+							<xsl:for-each select="InsertEntryParcels/InsertEntryParcel/@*">
 								<tr>
 									<td colspan="4">
 										<xsl:call-template name="TextBox">
@@ -5441,8 +5187,7 @@
 											<td colspan="3">
 												<xsl:call-template name="TextBox">
 													<xsl:with-param name="siz" select="75" />
-													<xsl:with-param name="val"
-														select="Inaccuracy" />
+													<xsl:with-param name="val" select="Inaccuracy" />
 												</xsl:call-template>
 											</td>
 										</tr>
@@ -5820,8 +5565,7 @@
 				<td>
 					<table style="WIDTH: 100%">
 						<xsl:call-template name="Table4" />
-						<xsl:if
-							test="Utilization/@Utilization!='' or  LandPermittedUses/Utilization/@Utilization!=''">
+						<xsl:if test="Utilization/@Utilization!='' or  LandPermittedUses/Utilization/@Utilization!=''">
 							<tr>
 								<td>
 									<span>
@@ -5838,15 +5582,13 @@
 										<xsl:with-param name="val"
 											select="Utilization/@Utilization | Utilization/@Kind | LandPermittedUses/Utilization/@Utilization" />
 									</xsl:call-template>
-									<!--xsl:call-template name="TextBox"> <xsl:with-param name="siz" 
-										select="75"/> <xsl:with-param name="val"> <xsl:choose> <xsl:when test="TerritorialZone">Описание 
-										территориальной зоны</xsl:when> <xsl:otherwise>Вид разрешенного использования 
-										участка</xsl:otherwise> </xsl:choose> </xsl:with-param> </xsl:call-template -->
+									<!--xsl:call-template name="TextBox"> <xsl:with-param name="siz" select="75"/> <xsl:with-param name="val"> <xsl:choose> 
+										<xsl:when test="TerritorialZone">Описание территориальной зоны</xsl:when> <xsl:otherwise>Вид разрешенного использования участка</xsl:otherwise> 
+										</xsl:choose> </xsl:with-param> </xsl:call-template -->
 								</td>
 							</tr>
 						</xsl:if>
-						<xsl:if
-							test="Utilization/@ByDoc!='' or LandPermittedUses/Utilization/@ByDoc!=''">
+						<xsl:if test="Utilization/@ByDoc!='' or LandPermittedUses/Utilization/@ByDoc!=''">
 							<tr>
 								<td>
 									<span>
@@ -5856,14 +5598,12 @@
 								<td colspan="3">
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="75" />
-										<xsl:with-param name="val"
-											select="Utilization/@ByDoc | LandPermittedUses/Utilization/@ByDoc" />
+										<xsl:with-param name="val" select="Utilization/@ByDoc | LandPermittedUses/Utilization/@ByDoc" />
 									</xsl:call-template>
 								</td>
 							</tr>
 						</xsl:if>
-						<xsl:for-each
-							select="Utilization/DocUtilization | LandPermittedUses/DocLandPermittedUses">
+						<xsl:for-each select="Utilization/DocUtilization | LandPermittedUses/DocLandPermittedUses">
 							<tr>
 								<td colspan="4">
 									<span style="font-weight:bold">
@@ -5920,8 +5660,7 @@
 											<xsl:call-template name="dAllowedUse" />
 										</xsl:with-param>
 										<xsl:with-param name="siz" select="75" />
-										<xsl:with-param name="val"
-											select="LandUse/@LandUse" />
+										<xsl:with-param name="val" select="LandUse/@LandUse" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -5941,8 +5680,7 @@
 								</td>
 							</tr>
 						</xsl:if>
-						<xsl:for-each
-							select="LandUse/DocLandUse | LandUse/DocLandPermittedUses | DocLandPermittedUses">
+						<xsl:for-each select="LandUse/DocLandUse | LandUse/DocLandPermittedUses | DocLandPermittedUses">
 							<tr>
 								<td colspan="4">
 									<span style="font-weight:bold">
@@ -6006,8 +5744,7 @@
 											<xsl:call-template name="dAllowedUse" />
 										</xsl:with-param>
 										<xsl:with-param name="siz" select="75" />
-										<xsl:with-param name="val"
-											select="PermittedUse/@PermittedUse" />
+										<xsl:with-param name="val" select="PermittedUse/@PermittedUse" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -6027,8 +5764,7 @@
 								</td>
 							</tr>
 						</xsl:if>
-						<xsl:for-each
-							select="LandUse/DocLandUse | LandUse/DocLandPermittedUses | DocLandPermittedUses">
+						<xsl:for-each select="LandUse/DocLandUse | LandUse/DocLandPermittedUses | DocLandPermittedUses">
 							<tr>
 								<td colspan="4">
 									<span style="font-weight:bold">
@@ -6093,8 +5829,7 @@
 										<xsl:with-param name="siz" select="75" />
 										<xsl:with-param name="val" select="Name" />
 										<xsl:with-param name="dic">
-											<xsl:call-template
-												name="dNatural_Objects03" />
+											<xsl:call-template name="dNatural_Objects03" />
 											<xsl:call-template name="dNatural_Objects" />
 										</xsl:with-param>
 									</xsl:call-template>
@@ -6113,8 +5848,7 @@
 										<xsl:with-param name="siz" select="75" />
 										<xsl:with-param name="val" select="Kind" />
 										<xsl:with-param name="dic">
-											<xsl:call-template
-												name="dNatural_Objects03" />
+											<xsl:call-template name="dNatural_Objects03" />
 										</xsl:with-param>
 									</xsl:call-template>
 								</td>
@@ -6162,8 +5896,7 @@
 								<td colspan="3">
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="75" />
-										<xsl:with-param name="val"
-											select="Type_ProtectiveForest" />
+										<xsl:with-param name="val" select="Type_ProtectiveForest" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -6212,8 +5945,7 @@
 								<td colspan="3">
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="75" />
-										<xsl:with-param name="val"
-											select="ProtectiveForest" />
+										<xsl:with-param name="val" select="ProtectiveForest" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -6228,11 +5960,9 @@
 								<td colspan="3">
 									<xsl:call-template name="DictBox">
 										<xsl:with-param name="siz" select="75" />
-										<xsl:with-param name="val"
-											select="CodeProtectiveForest" />
+										<xsl:with-param name="val" select="CodeProtectiveForest" />
 										<xsl:with-param name="dic">
-											<xsl:call-template
-												name="dForestCategoryProtective" />
+											<xsl:call-template name="dForestCategoryProtective" />
 										</xsl:with-param>
 									</xsl:call-template>
 								</td>
@@ -6259,8 +5989,7 @@
 								<td>
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="25" />
-										<xsl:with-param name="val"
-											select="Type_WaterObject" />
+										<xsl:with-param name="val" select="Type_WaterObject" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -6373,8 +6102,7 @@
 										<xsl:with-param name="siz" select="75" />
 										<xsl:with-param name="val" select="node()" />
 										<xsl:with-param name="dic">
-											<xsl:call-template
-												name="dForestEncumbrances" />
+											<xsl:call-template name="dForestEncumbrances" />
 										</xsl:with-param>
 									</xsl:call-template>
 								</td>
@@ -6391,11 +6119,9 @@
 								<td colspan="3">
 									<xsl:call-template name="DictBox">
 										<xsl:with-param name="siz" select="75" />
-										<xsl:with-param name="val"
-											select="CodeProtectiveForest" />
+										<xsl:with-param name="val" select="CodeProtectiveForest" />
 										<xsl:with-param name="dic">
-											<xsl:call-template
-												name="dForestCategoryProtective" />
+											<xsl:call-template name="dForestCategoryProtective" />
 										</xsl:with-param>
 									</xsl:call-template>
 								</td>
@@ -6514,8 +6240,7 @@
 							<td>
 								<xsl:call-template name="DateBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="@Date_Starting" />
+									<xsl:with-param name="val" select="@Date_Starting" />
 								</xsl:call-template>
 							</td>
 							<xsl:if test="@Date">
@@ -6588,8 +6313,7 @@
 							</td>
 						</tr>
 					</xsl:if>
-					<xsl:if
-						test="@NumberRecord!='' or @Number_PP!='' or @State!=''">
+					<xsl:if test="@NumberRecord!='' or @Number_PP!='' or @State!=''">
 						<tr>
 							<td>
 								<span>
@@ -6599,8 +6323,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="@Number_PP | @NumberRecord|@Definition" />
+									<xsl:with-param name="val" select="@Number_PP | @NumberRecord|@Definition" />
 								</xsl:call-template>
 							</td>
 							<xsl:choose>
@@ -6629,8 +6352,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="25" />
-											<xsl:with-param name="val"
-												select="@Definition" />
+											<xsl:with-param name="val" select="@Definition" />
 										</xsl:call-template>
 									</td>
 								</xsl:otherwise>
@@ -6657,8 +6379,7 @@
 								</xsl:variable>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="$SubParcel_Realty" />
+									<xsl:with-param name="val" select="$SubParcel_Realty" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -6673,8 +6394,7 @@
 							<td>
 								<xsl:variable name="Full">
 									<xsl:choose>
-										<xsl:when
-											test="@Full='true' or @Full=true or @Full='1' or @Full=1">
+										<xsl:when test="@Full='true' or @Full=true or @Full='1' or @Full=1">
 											<xsl:text>да</xsl:text>
 										</xsl:when>
 										<xsl:otherwise>
@@ -6788,8 +6508,7 @@
 											<xsl:call-template name="dRealty14" />
 										</xsl:with-param>
 										<xsl:with-param name="siz" select="75" />
-										<xsl:with-param name="val"
-											select="Object_Entry/@Type" />
+										<xsl:with-param name="val" select="Object_Entry/@Type" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -6802,8 +6521,7 @@
 								<td colspan="3">
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="75" />
-										<xsl:with-param name="val"
-											select="Object_Entry/@CadastralNumber" />
+										<xsl:with-param name="val" select="Object_Entry/@CadastralNumber" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -6823,8 +6541,7 @@
 					<td>
 						<table style="WIDTH: 100%">
 							<xsl:call-template name="Table4" />
-							<xsl:if
-								test="Realty/@CadastralNumber!='' or Realty/@ConditionalCadastralNumber!=''">
+							<xsl:if test="Realty/@CadastralNumber!='' or Realty/@ConditionalCadastralNumber!=''">
 								<tr>
 									<td>
 										<span>
@@ -6834,8 +6551,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="25" />
-											<xsl:with-param name="val"
-												select="Realty/@CadastralNumber" />
+											<xsl:with-param name="val" select="Realty/@CadastralNumber" />
 										</xsl:call-template>
 									</td>
 									<td>
@@ -6846,8 +6562,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="25" />
-											<xsl:with-param name="val"
-												select="Realty/@ConditionalCadastralNumber" />
+											<xsl:with-param name="val" select="Realty/@ConditionalCadastralNumber" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -6862,8 +6577,7 @@
 									<td colspan="2">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="50" />
-											<xsl:with-param name="val"
-												select="Realty/Using" />
+											<xsl:with-param name="val" select="Realty/Using" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -6878,8 +6592,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="25" />
-											<xsl:with-param name="val"
-												select="Realty/Name" />
+											<xsl:with-param name="val" select="Realty/Name" />
 										</xsl:call-template>
 									</td>
 									<td>
@@ -6893,8 +6606,7 @@
 												<xsl:call-template name="dRealty" />
 											</xsl:with-param>
 											<xsl:with-param name="siz" select="25" />
-											<xsl:with-param name="val"
-												select="Realty/Type" />
+											<xsl:with-param name="val" select="Realty/Type" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -6907,8 +6619,7 @@
 								</td>
 							</tr>
 
-							<xsl:if
-								test="Realty/Registration/OrgRegister!='' or Realty/Registration/RegNumber!=''">
+							<xsl:if test="Realty/Registration/OrgRegister!='' or Realty/Registration/RegNumber!=''">
 								<tr>
 									<td>
 										<span>
@@ -6918,8 +6629,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="25" />
-											<xsl:with-param name="val"
-												select="Realty/Registration/OrgRegister" />
+											<xsl:with-param name="val" select="Realty/Registration/OrgRegister" />
 										</xsl:call-template>
 									</td>
 									<td>
@@ -6930,14 +6640,12 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="25" />
-											<xsl:with-param name="val"
-												select="Realty/Registration/RegNumber" />
+											<xsl:with-param name="val" select="Realty/Registration/RegNumber" />
 										</xsl:call-template>
 									</td>
 								</tr>
 							</xsl:if>
-							<xsl:if
-								test="Realty/Registration/RegDate!='' or Realty/Registration/DateClose!=''">
+							<xsl:if test="Realty/Registration/RegDate!='' or Realty/Registration/DateClose!=''">
 								<tr>
 									<td>
 										<span>
@@ -6947,8 +6655,7 @@
 									<td>
 										<xsl:call-template name="DateBox">
 											<xsl:with-param name="siz" select="25" />
-											<xsl:with-param name="val"
-												select="Realty/Registration/RegDate" />
+											<xsl:with-param name="val" select="Realty/Registration/RegDate" />
 										</xsl:call-template>
 									</td>
 									<td>
@@ -6959,8 +6666,7 @@
 									<td>
 										<xsl:call-template name="DateBox">
 											<xsl:with-param name="siz" select="25" />
-											<xsl:with-param name="val"
-												select="Realty/Registration/DateClose" />
+											<xsl:with-param name="val" select="Realty/Registration/DateClose" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -7155,8 +6861,7 @@
 								<td>
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="25" />
-										<xsl:with-param name="val"
-											select="Elaboration/ReferenceMark" />
+										<xsl:with-param name="val" select="Elaboration/ReferenceMark" />
 									</xsl:call-template>
 								</td>
 								<td>
@@ -7172,8 +6877,7 @@
 								</td>
 							</tr>
 						</xsl:if>
-						<xsl:if
-							test="Elaboration/Distance!='' or Elaboration/Direction!=''">
+						<xsl:if test="Elaboration/Distance!='' or Elaboration/Direction!=''">
 							<tr>
 								<td>
 									<span>
@@ -7183,8 +6887,7 @@
 								<td>
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="25" />
-										<xsl:with-param name="val"
-											select="Elaboration/Distance" />
+										<xsl:with-param name="val" select="Elaboration/Distance" />
 									</xsl:call-template>
 								</td>
 								<td>
@@ -7195,8 +6898,7 @@
 								<td>
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="25" />
-										<xsl:with-param name="val"
-											select="Elaboration/Direction" />
+										<xsl:with-param name="val" select="Elaboration/Direction" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -7209,8 +6911,7 @@
 			<xsl:when test="Address">
 				<xsl:for-each select="Address">
 					<xsl:choose>
-						<xsl:when
-							test="$DocumentVersion='Request17' or $DocumentVersion='RequestGRP'">
+						<xsl:when test="$DocumentVersion='Request17' or $DocumentVersion='RequestGRP'">
 							<tr>
 								<td colspan="4">
 									<xsl:call-template name="Location17">
@@ -7233,8 +6934,7 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:choose>
-					<xsl:when
-						test="$DocumentVersion='Request17' or $DocumentVersion='RequestGRP'">
+					<xsl:when test="$DocumentVersion='Request17' or $DocumentVersion='RequestGRP'">
 						<tr>
 							<td colspan="4">
 								<xsl:call-template name="Location17">
@@ -7300,8 +7000,7 @@
 					<td colspan="2">
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="25" />
-							<xsl:with-param name="val"
-								select="Code_OKATO|OKATO" />
+							<xsl:with-param name="val" select="Code_OKATO|OKATO" />
 						</xsl:call-template>
 					</td>
 					<td colspan="2">
@@ -7312,8 +7011,7 @@
 					<td colspan="2">
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="25" />
-							<xsl:with-param name="val"
-								select="Code_KLADR|KLADR" />
+							<xsl:with-param name="val" select="Code_KLADR|KLADR" />
 						</xsl:call-template>
 					</td>
 				</tr>
@@ -7343,8 +7041,7 @@
 					<td colspan="6">
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="75" />
-							<xsl:with-param name="val"
-								select="Postal_Code|PostalCode" />
+							<xsl:with-param name="val" select="Postal_Code|PostalCode" />
 						</xsl:call-template>
 					</td>
 				</tr>
@@ -7398,15 +7095,13 @@
 					<td colspan="5">
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="60" />
-							<xsl:with-param name="val"
-								select="Urban_District/@Name | UrbanDistrict/@Name" />
+							<xsl:with-param name="val" select="Urban_District/@Name | UrbanDistrict/@Name" />
 						</xsl:call-template>
 					</td>
 					<td colspan="1">
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="15" />
-							<xsl:with-param name="val"
-								select="Urban_District/@Type | UrbanDistrict/@Type" />
+							<xsl:with-param name="val" select="Urban_District/@Type | UrbanDistrict/@Type" />
 						</xsl:call-template>
 					</td>
 				</tr>
@@ -7422,15 +7117,13 @@
 					<td colspan="5">
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="60" />
-							<xsl:with-param name="val"
-								select="Soviet_Village/@Name|SovietVillage/@Name" />
+							<xsl:with-param name="val" select="Soviet_Village/@Name|SovietVillage/@Name" />
 						</xsl:call-template>
 					</td>
 					<td colspan="1">
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="15" />
-							<xsl:with-param name="val"
-								select="Soviet_Village/@Type|SovietVillage/@Type" />
+							<xsl:with-param name="val" select="Soviet_Village/@Type|SovietVillage/@Type" />
 						</xsl:call-template>
 					</td>
 				</tr>
@@ -7487,15 +7180,13 @@
 					<td colspan="5">
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="60" />
-							<xsl:with-param name="val"
-								select="Locality1/@Name" />
+							<xsl:with-param name="val" select="Locality1/@Name" />
 						</xsl:call-template>
 					</td>
 					<td colspan="1">
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="15" />
-							<xsl:with-param name="val"
-								select="Locality1/@Type" />
+							<xsl:with-param name="val" select="Locality1/@Type" />
 						</xsl:call-template>
 					</td>
 				</tr>
@@ -7510,15 +7201,13 @@
 					<td colspan="5">
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="60" />
-							<xsl:with-param name="val"
-								select="Locality2/@Name" />
+							<xsl:with-param name="val" select="Locality2/@Name" />
 						</xsl:call-template>
 					</td>
 					<td colspan="1">
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="15" />
-							<xsl:with-param name="val"
-								select="Locality2/@Type" />
+							<xsl:with-param name="val" select="Locality2/@Type" />
 						</xsl:call-template>
 					</td>
 				</tr>
@@ -7545,8 +7234,7 @@
 				</tr>
 			</xsl:if>
 			<xsl:choose>
-				<xsl:when
-					test="Level1/@Value or Level2/@Value or Level3/@Value or Apartment/@Value">
+				<xsl:when test="Level1/@Value or Level2/@Value or Level3/@Value or Apartment/@Value">
 					<xsl:if test="Level1/@Value">
 						<tr>
 							<td colspan="2">
@@ -7557,15 +7245,13 @@
 							<td colspan="5">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="60" />
-									<xsl:with-param name="val"
-										select="Level1/@Value" />
+									<xsl:with-param name="val" select="Level1/@Value" />
 								</xsl:call-template>
 							</td>
 							<td colspan="1">
 								<xsl:call-template name="DictBox">
 									<xsl:with-param name="dic">
-										<xsl:call-template
-											name="dLocationLevel1Type" />
+										<xsl:call-template name="dLocationLevel1Type" />
 									</xsl:with-param>
 									<xsl:with-param name="siz" select="15" />
 									<xsl:with-param name="val" select="Level1/@Type" />
@@ -7583,15 +7269,13 @@
 							<td colspan="5">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="60" />
-									<xsl:with-param name="val"
-										select="Level2/@Value" />
+									<xsl:with-param name="val" select="Level2/@Value" />
 								</xsl:call-template>
 							</td>
 							<td colspan="1">
 								<xsl:call-template name="DictBox">
 									<xsl:with-param name="dic">
-										<xsl:call-template
-											name="dLocationLevel1Type" />
+										<xsl:call-template name="dLocationLevel1Type" />
 									</xsl:with-param>
 									<xsl:with-param name="siz" select="15" />
 									<xsl:with-param name="val" select="Level2/@Type" />
@@ -7609,15 +7293,13 @@
 							<td colspan="5">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="60" />
-									<xsl:with-param name="val"
-										select="Level3/@Value" />
+									<xsl:with-param name="val" select="Level3/@Value" />
 								</xsl:call-template>
 							</td>
 							<td colspan="1">
 								<xsl:call-template name="DictBox">
 									<xsl:with-param name="dic">
-										<xsl:call-template
-											name="dLocationLevel1Type" />
+										<xsl:call-template name="dLocationLevel1Type" />
 									</xsl:with-param>
 									<xsl:with-param name="siz" select="15" />
 									<xsl:with-param name="val" select="Level3/@Type" />
@@ -7635,19 +7317,16 @@
 							<td colspan="5">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="60" />
-									<xsl:with-param name="val"
-										select="Apartment/@Value" />
+									<xsl:with-param name="val" select="Apartment/@Value" />
 								</xsl:call-template>
 							</td>
 							<td colspan="1">
 								<xsl:call-template name="DictBox">
 									<xsl:with-param name="dic">
-										<xsl:call-template
-											name="dLocationLevel1Type" />
+										<xsl:call-template name="dLocationLevel1Type" />
 									</xsl:with-param>
 									<xsl:with-param name="siz" select="15" />
-									<xsl:with-param name="val"
-										select="Apartment/@Type" />
+									<xsl:with-param name="val" select="Apartment/@Type" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -7812,8 +7491,7 @@
 							<td colspan="2">
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="loc2:PostalCode" />
+									<xsl:with-param name="val" select="loc2:PostalCode" />
 								</xsl:call-template>
 							</td>
 						</xsl:when>
@@ -7828,8 +7506,7 @@
 								<td colspan="6">
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="75" />
-										<xsl:with-param name="val"
-											select="loc2:PostalCode" />
+										<xsl:with-param name="val" select="loc2:PostalCode" />
 									</xsl:call-template>
 								</td>
 							</xsl:if>
@@ -7865,15 +7542,13 @@
 						<td colspan="5">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="60" />
-								<xsl:with-param name="val"
-									select="loc2:District/@Name" />
+								<xsl:with-param name="val" select="loc2:District/@Name" />
 							</xsl:call-template>
 						</td>
 						<td colspan="1">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="15" />
-								<xsl:with-param name="val"
-									select="loc2:District/@Type" />
+								<xsl:with-param name="val" select="loc2:District/@Type" />
 							</xsl:call-template>
 						</td>
 					</tr>
@@ -7888,15 +7563,13 @@
 						<td colspan="5">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="60" />
-								<xsl:with-param name="val"
-									select="loc2:City/@Name" />
+								<xsl:with-param name="val" select="loc2:City/@Name" />
 							</xsl:call-template>
 						</td>
 						<td colspan="1">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="15" />
-								<xsl:with-param name="val"
-									select="loc2:City/@Type" />
+								<xsl:with-param name="val" select="loc2:City/@Type" />
 							</xsl:call-template>
 						</td>
 					</tr>
@@ -7912,15 +7585,13 @@
 						<td colspan="5">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="60" />
-								<xsl:with-param name="val"
-									select="loc2:UrbanDistrict/@Name" />
+								<xsl:with-param name="val" select="loc2:UrbanDistrict/@Name" />
 							</xsl:call-template>
 						</td>
 						<td colspan="1">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="15" />
-								<xsl:with-param name="val"
-									select="loc2:UrbanDistrict/@Type" />
+								<xsl:with-param name="val" select="loc2:UrbanDistrict/@Type" />
 							</xsl:call-template>
 						</td>
 					</tr>
@@ -7936,15 +7607,13 @@
 						<td colspan="5">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="60" />
-								<xsl:with-param name="val"
-									select="loc2:SovietVillage/@Name" />
+								<xsl:with-param name="val" select="loc2:SovietVillage/@Name" />
 							</xsl:call-template>
 						</td>
 						<td colspan="1">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="15" />
-								<xsl:with-param name="val"
-									select="loc2:SovietVillage/@Type" />
+								<xsl:with-param name="val" select="loc2:SovietVillage/@Type" />
 							</xsl:call-template>
 						</td>
 					</tr>
@@ -7959,15 +7628,13 @@
 						<td colspan="5">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="60" />
-								<xsl:with-param name="val"
-									select="loc2:Locality/@Name" />
+								<xsl:with-param name="val" select="loc2:Locality/@Name" />
 							</xsl:call-template>
 						</td>
 						<td colspan="1">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="15" />
-								<xsl:with-param name="val"
-									select="loc2:Locality/@Type" />
+								<xsl:with-param name="val" select="loc2:Locality/@Type" />
 							</xsl:call-template>
 						</td>
 					</tr>
@@ -7982,15 +7649,13 @@
 						<td colspan="5">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="60" />
-								<xsl:with-param name="val"
-									select="loc2:Street/@Name" />
+								<xsl:with-param name="val" select="loc2:Street/@Name" />
 							</xsl:call-template>
 						</td>
 						<td colspan="1">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="15" />
-								<xsl:with-param name="val"
-									select="loc2:Street/@Type" />
+								<xsl:with-param name="val" select="loc2:Street/@Type" />
 							</xsl:call-template>
 						</td>
 					</tr>
@@ -8005,15 +7670,13 @@
 						<td colspan="5">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="60" />
-								<xsl:with-param name="val"
-									select="loc2:Level1/@Value" />
+								<xsl:with-param name="val" select="loc2:Level1/@Value" />
 							</xsl:call-template>
 						</td>
 						<td colspan="1">
 							<xsl:call-template name="DictBox">
 								<xsl:with-param name="siz" select="15" />
-								<xsl:with-param name="val"
-									select="loc2:Level1/@Type" />
+								<xsl:with-param name="val" select="loc2:Level1/@Type" />
 								<xsl:with-param name="dic">
 									<xsl:call-template name="dLocationLevel1Type" />
 								</xsl:with-param>
@@ -8032,15 +7695,13 @@
 						<td colspan="5">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="60" />
-								<xsl:with-param name="val"
-									select="loc2:Level2/@Value" />
+								<xsl:with-param name="val" select="loc2:Level2/@Value" />
 							</xsl:call-template>
 						</td>
 						<td colspan="1">
 							<xsl:call-template name="DictBox">
 								<xsl:with-param name="siz" select="15" />
-								<xsl:with-param name="val"
-									select="loc2:Level2/@Type" />
+								<xsl:with-param name="val" select="loc2:Level2/@Type" />
 								<xsl:with-param name="dic">
 									<xsl:call-template name="dLocationLevel1Type" />
 								</xsl:with-param>
@@ -8059,15 +7720,13 @@
 						<td colspan="5">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="60" />
-								<xsl:with-param name="val"
-									select="loc2:Level3/@Value" />
+								<xsl:with-param name="val" select="loc2:Level3/@Value" />
 							</xsl:call-template>
 						</td>
 						<td colspan="1">
 							<xsl:call-template name="DictBox">
 								<xsl:with-param name="siz" select="15" />
-								<xsl:with-param name="val"
-									select="loc2:Level3/@Type" />
+								<xsl:with-param name="val" select="loc2:Level3/@Type" />
 								<xsl:with-param name="dic">
 									<xsl:call-template name="dLocationLevel1Type" />
 								</xsl:with-param>
@@ -8086,15 +7745,13 @@
 						<td colspan="5">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="60" />
-								<xsl:with-param name="val"
-									select="loc2:Apartment/@Value" />
+								<xsl:with-param name="val" select="loc2:Apartment/@Value" />
 							</xsl:call-template>
 						</td>
 						<td colspan="1">
 							<xsl:call-template name="DictBox">
 								<xsl:with-param name="siz" select="15" />
-								<xsl:with-param name="val"
-									select="loc2:Apartment/@Type" />
+								<xsl:with-param name="val" select="loc2:Apartment/@Type" />
 								<xsl:with-param name="dic">
 									<xsl:call-template name="dLocationLevel1Type" />
 								</xsl:with-param>
@@ -8272,15 +7929,13 @@
 					<td colspan="5">
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="60" />
-							<xsl:with-param name="val"
-								select="Urban_District/@Name" />
+							<xsl:with-param name="val" select="Urban_District/@Name" />
 						</xsl:call-template>
 					</td>
 					<td colspan="1">
 						<xsl:call-template name="DictBox">
 							<xsl:with-param name="siz" select="15" />
-							<xsl:with-param name="val"
-								select="Urban_District/@Type" />
+							<xsl:with-param name="val" select="Urban_District/@Type" />
 							<xsl:with-param name="dic">
 								<xsl:call-template name="dUrbanDistrict" />
 							</xsl:with-param>
@@ -8298,15 +7953,13 @@
 					<td colspan="5">
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="60" />
-							<xsl:with-param name="val"
-								select="Soviet_Village/@Name" />
+							<xsl:with-param name="val" select="Soviet_Village/@Name" />
 						</xsl:call-template>
 					</td>
 					<td colspan="1">
 						<xsl:call-template name="DictBox">
 							<xsl:with-param name="siz" select="15" />
-							<xsl:with-param name="val"
-								select="Soviet_Village/@Type" />
+							<xsl:with-param name="val" select="Soviet_Village/@Type" />
 							<xsl:with-param name="dic">
 								<xsl:call-template name="dSovietVillage" />
 							</xsl:with-param>
@@ -8438,15 +8091,13 @@
 					<td colspan="5">
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="60" />
-							<xsl:with-param name="val"
-								select="Apartment/@Value" />
+							<xsl:with-param name="val" select="Apartment/@Value" />
 						</xsl:call-template>
 					</td>
 					<td colspan="1">
 						<xsl:call-template name="DictBox">
 							<xsl:with-param name="siz" select="15" />
-							<xsl:with-param name="val"
-								select="Apartment/@Type" />
+							<xsl:with-param name="val" select="Apartment/@Type" />
 							<xsl:with-param name="dic">
 								<xsl:call-template name="dApartmentType" />
 							</xsl:with-param>
@@ -8494,8 +8145,7 @@
 					<td colspan="6">
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="75" />
-							<xsl:with-param name="val"
-								select="Name_consolidation" />
+							<xsl:with-param name="val" select="Name_consolidation" />
 						</xsl:call-template>
 					</td>
 				</tr>
@@ -8506,8 +8156,7 @@
 		</table>
 	</xsl:template>
 
-	<xsl:template name="AddressStatement01"
-		xmlns:docs="http://rosreestr.ru/services/v0.1/commons/Documents"
+	<xsl:template name="AddressStatement01" xmlns:docs="http://rosreestr.ru/services/v0.1/commons/Documents"
 		xmlns:stCom="http://rosreestr.ru/services/v0.1/TStatementCommons"
 		xmlns:addr="http://rosreestr.ru/services/v0.1/commons/Address"
 		xmlns:obj="http://rosreestr.ru/services/v0.1/commons/TObject"
@@ -8590,8 +8239,7 @@
 					<td colspan="3">
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="25" />
-							<xsl:with-param name="val"
-								select="addr:postalCode" />
+							<xsl:with-param name="val" select="addr:postalCode" />
 						</xsl:call-template>
 					</td>
 				</tr>
@@ -8735,8 +8383,7 @@
 
 	</xsl:template>
 
-	<xsl:template name="AddressObj"
-		xmlns:docs="http://rosreestr.ru/services/v0.1/commons/Documents"
+	<xsl:template name="AddressObj" xmlns:docs="http://rosreestr.ru/services/v0.1/commons/Documents"
 		xmlns:stCom="http://rosreestr.ru/services/v0.1/TStatementCommons"
 		xmlns:addr="http://rosreestr.ru/services/v0.1/commons/Address"
 		xmlns:obj="http://rosreestr.ru/services/v0.1/commons/TObject"
@@ -8890,8 +8537,7 @@
 											</span>
 										</td>
 										<xsl:choose>
-											<xsl:when
-												test="contains(local-name(..),'Building') or contains(local-name(..),'Construction')">
+											<xsl:when test="contains(local-name(..),'Building') or contains(local-name(..),'Construction')">
 												<td>
 													<span>
 														<xsl:text>Радиус</xsl:text>
@@ -8911,8 +8557,7 @@
 									</xsl:if>
 								</tr>
 								<xsl:for-each select="Spatial_Element">
-									<xsl:variable name="Spatial_Element"
-										select="position()-1" />
+									<xsl:variable name="Spatial_Element" select="position()-1" />
 									<xsl:for-each select="Spelement_Unit/Ordinate">
 										<tr>
 											<td>
@@ -8921,8 +8566,7 @@
 													<xsl:with-param name="val">
 														<xsl:text>"</xsl:text>
 														<xsl:value-of select="../@Type_Unit" />
-														<xsl:if
-															test="../@Su_Nmb!='' and ../@Type_Unit!='Точка'">
+														<xsl:if test="../@Su_Nmb!='' and ../@Type_Unit!='Точка'">
 															<xsl:text> </xsl:text>
 															<xsl:value-of select="../@Su_Nmb" />
 														</xsl:if>
@@ -8960,9 +8604,8 @@
 													<xsl:with-param name="val" select="@Y" />
 												</xsl:call-template>
 											</td>
-											<!--<td> <xsl:call-template name="TextBox"> <xsl:with-param name="siz" 
-												select="15"/> <xsl:with-param name="val" select="@Delta_Geopoint"/> </xsl:call-template> 
-												</td> -->
+											<!--<td> <xsl:call-template name="TextBox"> <xsl:with-param name="siz" select="15"/> <xsl:with-param name="val" 
+												select="@Delta_Geopoint"/> </xsl:call-template> </td> -->
 											<xsl:choose>
 												<xsl:when
 													test="contains(local-name(../../../..),'Building') or contains(local-name(../../../..),'Construction')">
@@ -8984,8 +8627,7 @@
 													<xsl:with-param name="val">
 														<xsl:text>"</xsl:text>
 														<xsl:value-of select="../@Type_Unit" />
-														<xsl:if
-															test="../@Su_Nmb!='' and ../@Type_Unit!='Точка'">
+														<xsl:if test="../@Su_Nmb!='' and ../@Type_Unit!='Точка'">
 															<xsl:text> </xsl:text>
 															<xsl:value-of select="../@Su_Nmb" />
 														</xsl:if>
@@ -9023,9 +8665,8 @@
 													<xsl:with-param name="val" select="@Y" />
 												</xsl:call-template>
 											</td>
-											<!-- <td> <xsl:call-template name="TextBox"> <xsl:with-param name="siz" 
-												select="15"/> <xsl:with-param name="val" select="@Delta_Geopoint"/> </xsl:call-template> 
-												</td> -->
+											<!-- <td> <xsl:call-template name="TextBox"> <xsl:with-param name="siz" select="15"/> <xsl:with-param name="val" 
+												select="@Delta_Geopoint"/> </xsl:call-template> </td> -->
 											<xsl:choose>
 												<xsl:when
 													test="contains(local-name(../../../..),'Building') or contains(local-name(../../../..),'Construction')">
@@ -9036,11 +8677,9 @@
 														</xsl:call-template>
 													</td>
 												</xsl:when>
-												<!-- <xsl:otherwise> <td> <xsl:call-template name="DictBox"> 
-													<xsl:with-param name="dic"> <xsl:call-template name="dGeopoint_Zacrep03"/> 
-													<xsl:call-template name="dGeopoint_Zacrep"/> </xsl:with-param> <xsl:with-param 
-													name="siz" select="25"/> <xsl:with-param name="val" select="@Geopoint_Zacrep"/> 
-													</xsl:call-template> </td> </xsl:otherwise> -->
+												<!-- <xsl:otherwise> <td> <xsl:call-template name="DictBox"> <xsl:with-param name="dic"> <xsl:call-template name="dGeopoint_Zacrep03"/> 
+													<xsl:call-template name="dGeopoint_Zacrep"/> </xsl:with-param> <xsl:with-param name="siz" select="25"/> <xsl:with-param name="val" 
+													select="@Geopoint_Zacrep"/> </xsl:call-template> </td> </xsl:otherwise> -->
 											</xsl:choose>
 										</tr>
 									</xsl:for-each>
@@ -9132,36 +8771,29 @@
 													<td>
 														<xsl:call-template name="TextBox">
 															<xsl:with-param name="siz" select="15" />
-															<xsl:with-param name="val"
-																select="Edge/Length" />
+															<xsl:with-param name="val" select="Edge/Length" />
 														</xsl:call-template>
 													</td>
 													<td>
 														<xsl:call-template name="TextBox">
 															<xsl:with-param name="siz" select="15" />
-															<xsl:with-param name="val"
-																select="Edge/Definition" />
+															<xsl:with-param name="val" select="Edge/Definition" />
 														</xsl:call-template>
 													</td>
 													<td>
 														<xsl:variable name="CadNum">
-															<xsl:for-each
-																select="//RelatedParcels/ParcelNeighbours">
+															<xsl:for-each select="//RelatedParcels/ParcelNeighbours">
 																<xsl:variable name="Points">
 																	<xsl:value-of select="Definition" />
 																</xsl:variable>
 																<xsl:variable name="p01">
-																	<xsl:value-of
-																		select="substring-before($Points,'-')" />
+																	<xsl:value-of select="substring-before($Points,'-')" />
 																</xsl:variable>
 																<xsl:variable name="p02">
-																	<xsl:value-of
-																		select="substring-after($Points,'-')" />
+																	<xsl:value-of select="substring-after($Points,'-')" />
 																</xsl:variable>
-																<xsl:if
-																	test="($p1=$p01 and $p02=$p2) or ($p2=$p01 and $p02=$p1)">
-																	<xsl:value-of
-																		select="ParcelNeighbour/Cadastral_Number" />
+																<xsl:if test="($p1=$p01 and $p02=$p2) or ($p2=$p01 and $p02=$p1)">
+																	<xsl:value-of select="ParcelNeighbour/Cadastral_Number" />
 																</xsl:if>
 															</xsl:for-each>
 														</xsl:variable>
@@ -9241,23 +8873,19 @@
 															</xsl:with-param>
 														</xsl:call-template>
 													</td>
-													<!--td> <xsl:call-template name="TextBox"> <xsl:with-param name="siz" 
-														select="15"/> <xsl:with-param name="val"> <xsl:if test="Edge/Direction_Angle!=''"> 
-														<xsl:value-of select="Edge/Direction_Angle/Degree"/> <xsl:text>.</xsl:text> 
-														<xsl:value-of select="Edge/Direction_Angle/Minute"/> </xsl:if> </xsl:with-param> 
-														</xsl:call-template> </td -->
+													<!--td> <xsl:call-template name="TextBox"> <xsl:with-param name="siz" select="15"/> <xsl:with-param name="val"> 
+														<xsl:if test="Edge/Direction_Angle!=''"> <xsl:value-of select="Edge/Direction_Angle/Degree"/> <xsl:text>.</xsl:text> <xsl:value-of 
+														select="Edge/Direction_Angle/Minute"/> </xsl:if> </xsl:with-param> </xsl:call-template> </td -->
 													<td>
 														<xsl:call-template name="TextBox">
 															<xsl:with-param name="siz" select="15" />
-															<xsl:with-param name="val"
-																select="Edge/Length" />
+															<xsl:with-param name="val" select="Edge/Length" />
 														</xsl:call-template>
 													</td>
 													<td>
 														<xsl:call-template name="TextBox">
 															<xsl:with-param name="siz" select="15" />
-															<xsl:with-param name="val"
-																select="Edge/Definition" />
+															<xsl:with-param name="val" select="Edge/Definition" />
 														</xsl:call-template>
 													</td>
 
@@ -9265,8 +8893,7 @@
 														<xsl:call-template name="TextBox">
 															<xsl:with-param name="siz" select="25" />
 															<xsl:with-param name="val">
-																<xsl:for-each
-																	select="Edge/Neighbours/CadastralNumber">
+																<xsl:for-each select="Edge/Neighbours/CadastralNumber">
 																	<xsl:value-of select="." />
 																	<xsl:text> </xsl:text>
 																</xsl:for-each>
@@ -9437,8 +9064,7 @@
 											<xsl:text>Координата Y</xsl:text>
 										</span>
 									</td>
-									<xsl:if
-										test="SpatialElement/@DeltaGeopoint or SpatialElement/SpelementUnit/Ordinate/@DeltaGeopoint">
+									<xsl:if test="SpatialElement/@DeltaGeopoint or SpatialElement/SpelementUnit/Ordinate/@DeltaGeopoint">
 
 										<td>
 											<span>
@@ -9447,8 +9073,7 @@
 										</td>
 									</xsl:if>
 									<xsl:choose>
-										<xsl:when
-											test="contains(local-name(..),'Building') or contains(local-name(..),'Construction')">
+										<xsl:when test="contains(local-name(..),'Building') or contains(local-name(..),'Construction')">
 											<td>
 												<span>
 													<xsl:text>Радиус</xsl:text>
@@ -9456,8 +9081,7 @@
 											</td>
 										</xsl:when>
 										<xsl:otherwise>
-											<xsl:if
-												test="SpatialElement/@GeopointZacrep or SpatialElement/SpelementUnit/Ordinate/@GeopointZacrep">
+											<xsl:if test="SpatialElement/@GeopointZacrep or SpatialElement/SpelementUnit/Ordinate/@GeopointZacrep">
 												<td>
 													<span>
 														<xsl:text>Способ закрепления</xsl:text>
@@ -9468,8 +9092,7 @@
 									</xsl:choose>
 								</tr>
 								<xsl:for-each select="SpatialElement">
-									<xsl:variable name="Spatial_Element"
-										select="position()-1" />
+									<xsl:variable name="Spatial_Element" select="position()-1" />
 									<xsl:for-each select="SpelementUnit/Ordinate">
 										<tr>
 											<td>
@@ -9478,8 +9101,7 @@
 													<xsl:with-param name="val">
 														<xsl:text>"</xsl:text>
 														<xsl:value-of select="../@TypeUnit" />
-														<xsl:if
-															test="../@Su_Nmb!='' and ../@TypeUnit!='Точка'">
+														<xsl:if test="../@Su_Nmb!='' and ../@TypeUnit!='Точка'">
 															<xsl:text> </xsl:text>
 															<xsl:value-of select="../@Su_Nmb" />
 														</xsl:if>
@@ -9522,8 +9144,7 @@
 												<td>
 													<xsl:call-template name="TextBox">
 														<xsl:with-param name="siz" select="15" />
-														<xsl:with-param name="val"
-															select="@DeltaGeopoint" />
+														<xsl:with-param name="val" select="@DeltaGeopoint" />
 													</xsl:call-template>
 												</td>
 											</xsl:if>
@@ -9533,8 +9154,7 @@
 												<td>
 													<xsl:call-template name="TextBox">
 														<xsl:with-param name="siz" select="15" />
-														<xsl:with-param name="val"
-															select="@GeopointZacrep" />
+														<xsl:with-param name="val" select="@GeopointZacrep" />
 													</xsl:call-template>
 												</td>
 											</xsl:if>
@@ -9559,8 +9179,7 @@
 													<xsl:with-param name="val">
 														<xsl:text>"</xsl:text>
 														<xsl:value-of select="../@TypeUnit" />
-														<xsl:if
-															test="../@Su_Nmb!='' and ../@TypeUnit!='Точка'">
+														<xsl:if test="../@Su_Nmb!='' and ../@TypeUnit!='Точка'">
 															<xsl:text> </xsl:text>
 															<xsl:value-of select="../@Su_Nmb" />
 														</xsl:if>
@@ -9598,9 +9217,8 @@
 													<xsl:with-param name="val" select="@Y" />
 												</xsl:call-template>
 											</td>
-											<!-- <td> <xsl:call-template name="TextBox"> <xsl:with-param name="siz" 
-												select="15"/> <xsl:with-param name="val" select="@Delta_Geopoint"/> </xsl:call-template> 
-												</td> -->
+											<!-- <td> <xsl:call-template name="TextBox"> <xsl:with-param name="siz" select="15"/> <xsl:with-param name="val" 
+												select="@Delta_Geopoint"/> </xsl:call-template> </td> -->
 											<xsl:choose>
 												<xsl:when
 													test="contains(local-name(../../../..),'Building') or contains(local-name(../../../..),'Construction')">
@@ -9611,11 +9229,9 @@
 														</xsl:call-template>
 													</td>
 												</xsl:when>
-												<!-- <xsl:otherwise> <td> <xsl:call-template name="DictBox"> 
-													<xsl:with-param name="dic"> <xsl:call-template name="dGeopoint_Zacrep03"/> 
-													<xsl:call-template name="dGeopoint_Zacrep"/> </xsl:with-param> <xsl:with-param 
-													name="siz" select="25"/> <xsl:with-param name="val" select="@Geopoint_Zacrep"/> 
-													</xsl:call-template> </td> </xsl:otherwise> -->
+												<!-- <xsl:otherwise> <td> <xsl:call-template name="DictBox"> <xsl:with-param name="dic"> <xsl:call-template name="dGeopoint_Zacrep03"/> 
+													<xsl:call-template name="dGeopoint_Zacrep"/> </xsl:with-param> <xsl:with-param name="siz" select="25"/> <xsl:with-param name="val" 
+													select="@Geopoint_Zacrep"/> </xsl:call-template> </td> </xsl:otherwise> -->
 											</xsl:choose>
 										</tr>
 									</xsl:for-each>
@@ -9702,16 +9318,14 @@
 											<td>
 												<xsl:call-template name="TextBox">
 													<xsl:with-param name="siz" select="15" />
-													<xsl:with-param name="val"
-														select="Edge/Length" />
+													<xsl:with-param name="val" select="Edge/Length" />
 												</xsl:call-template>
 											</td>
 											<xsl:if test="Edge/Definition!=''">
 												<td>
 													<xsl:call-template name="TextBox">
 														<xsl:with-param name="siz" select="15" />
-														<xsl:with-param name="val"
-															select="Edge/Definition" />
+														<xsl:with-param name="val" select="Edge/Definition" />
 													</xsl:call-template>
 												</td>
 											</xsl:if>
@@ -9781,8 +9395,7 @@
 									</td>
 								</tr>
 								<xsl:for-each select="ChangeBorder">
-									<xsl:variable name="Spatial_Element"
-										select="position()" />
+									<xsl:variable name="Spatial_Element" select="position()" />
 									<xsl:for-each select="*">
 										<tr>
 											<td>
@@ -9827,21 +9440,17 @@
 											<td>
 												<xsl:call-template name="TextBox">
 													<xsl:with-param name="siz" select="15" />
-													<xsl:with-param name="val"
-														select="@Delta_Geopoint" />
+													<xsl:with-param name="val" select="@Delta_Geopoint" />
 												</xsl:call-template>
 											</td>
 											<td>
 												<xsl:call-template name="DictBox">
 													<xsl:with-param name="dic">
-														<xsl:call-template
-															name="dGeopoint_Zacrep03" />
-														<xsl:call-template
-															name="dGeopoint_Zacrep" />
+														<xsl:call-template name="dGeopoint_Zacrep03" />
+														<xsl:call-template name="dGeopoint_Zacrep" />
 													</xsl:with-param>
 													<xsl:with-param name="siz" select="25" />
-													<xsl:with-param name="val"
-														select="@Geopoint_Zacrep" />
+													<xsl:with-param name="val" select="@Geopoint_Zacrep" />
 												</xsl:call-template>
 											</td>
 										</tr>
@@ -9885,8 +9494,7 @@
 					<td>
 						<table style="width:100%">
 							<xsl:call-template name="Table4" />
-							<xsl:if
-								test="@Number_PP!='' or @Definition!='' or @Number!=''">
+							<xsl:if test="@Number_PP!='' or @Definition!='' or @Number!=''">
 								<xsl:if test="@Number!=''">
 									<tr>
 										<td>
@@ -9911,8 +9519,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="@Definition" />
+											<xsl:with-param name="val" select="@Definition" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -9950,8 +9557,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="@Definition" />
+											<xsl:with-param name="val" select="@Definition" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -9991,8 +9597,7 @@
 									<td colspan="3">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="75" />
-											<xsl:with-param name="val"
-												select="@Definition" />
+											<xsl:with-param name="val" select="@Definition" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -10083,8 +9688,7 @@
 										<xsl:with-param name="val">
 											<xsl:text>"</xsl:text>
 											<xsl:value-of select="../@Type_Unit" />
-											<xsl:if
-												test="../@Su_Nmb!='' and ../@Type_Unit!='Точка'">
+											<xsl:if test="../@Su_Nmb!='' and ../@Type_Unit!='Точка'">
 												<xsl:text> </xsl:text>
 												<xsl:value-of select="../@Su_Nmb" />
 											</xsl:if>
@@ -10123,8 +9727,7 @@
 								<td>
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="15" />
-										<xsl:with-param name="val"
-											select="@Delta_Geopoint" />
+										<xsl:with-param name="val" select="@Delta_Geopoint" />
 									</xsl:call-template>
 								</td>
 								<xsl:choose>
@@ -10141,14 +9744,11 @@
 										<td>
 											<xsl:call-template name="DictBox">
 												<xsl:with-param name="dic">
-													<xsl:call-template
-														name="dGeopoint_Zacrep03" />
-													<xsl:call-template
-														name="dGeopoint_Zacrep" />
+													<xsl:call-template name="dGeopoint_Zacrep03" />
+													<xsl:call-template name="dGeopoint_Zacrep" />
 												</xsl:with-param>
 												<xsl:with-param name="siz" select="25" />
-												<xsl:with-param name="val"
-													select="@Geopoint_Zacrep" />
+												<xsl:with-param name="val" select="@Geopoint_Zacrep" />
 											</xsl:call-template>
 										</td>
 									</xsl:otherwise>
@@ -10330,8 +9930,7 @@
 							</td>
 						</tr>
 					</xsl:if>
-					<xsl:if
-						test="Assignation_Name!='' or */Assignation_Name!=''">
+					<xsl:if test="Assignation_Name!='' or */Assignation_Name!=''">
 						<tr>
 							<td>
 								<span>
@@ -10349,8 +9948,7 @@
 							</td>
 						</tr>
 					</xsl:if>
-					<xsl:if
-						test="Assignation_Code!='' or Area!='' or */Assignation_Code!='' or */Area!=''">
+					<xsl:if test="Assignation_Code!='' or Area!='' or */Assignation_Code!='' or */Area!=''">
 						<tr>
 							<td>
 								<span>
@@ -10386,8 +9984,7 @@
 							</td>
 						</tr>
 					</xsl:if>
-					<xsl:if
-						test="Exploitation_Char/@Year_Built!='' or Exploitation_Char/@Year_Used!=''">
+					<xsl:if test="Exploitation_Char/@Year_Built!='' or Exploitation_Char/@Year_Used!=''">
 						<tr>
 							<td>
 								<span>
@@ -10397,8 +9994,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Exploitation_Char/@Year_Built" />
+									<xsl:with-param name="val" select="Exploitation_Char/@Year_Built" />
 								</xsl:call-template>
 							</td>
 							<td>
@@ -10409,14 +10005,12 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Exploitation_Char/@Year_Used" />
+									<xsl:with-param name="val" select="Exploitation_Char/@Year_Used" />
 								</xsl:call-template>
 							</td>
 						</tr>
 					</xsl:if>
-					<xsl:if
-						test="Floors/@Floors!='' or Floors/@Underground_Floors!=''">
+					<xsl:if test="Floors/@Floors!='' or Floors/@Underground_Floors!=''">
 						<tr>
 							<td>
 								<span>
@@ -10426,8 +10020,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Floors/@Floors" />
+									<xsl:with-param name="val" select="Floors/@Floors" />
 								</xsl:call-template>
 							</td>
 							<td>
@@ -10438,8 +10031,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="Floors/@Underground_Floors" />
+									<xsl:with-param name="val" select="Floors/@Underground_Floors" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -10452,8 +10044,7 @@
 								</span>
 							</td>
 						</tr>
-						<xsl:for-each
-							select="Elements_Construct/Material/@Wall|*/Elements_Construct/Material/@Wall">
+						<xsl:for-each select="Elements_Construct/Material/@Wall|*/Elements_Construct/Material/@Wall">
 							<tr>
 								<td colspan="4">
 									<xsl:call-template name="DictBox">
@@ -10650,8 +10241,7 @@
 					<xsl:text>СВЕДЕНИЯ О ПРОГРАММЕ!</xsl:text>
 				</span>
 			</p>
-			<table align="center" cellspacing="0" cellpadding="2"
-				border="1" bgcolor="#eeeeee">
+			<table align="center" cellspacing="0" cellpadding="2" border="1" bgcolor="#eeeeee">
 				<xsl:attribute name="width">
           <xsl:value-of select="$TableWidth" />
         </xsl:attribute>
@@ -10671,8 +10261,7 @@
 								<td colspan="2">
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="50" />
-										<xsl:with-param name="val"
-											select="StatementGKN/NameSoftware" />
+										<xsl:with-param name="val" select="StatementGKN/NameSoftware" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -10685,8 +10274,7 @@
 								<td colspan="2">
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="50" />
-										<xsl:with-param name="val"
-											select="StatementGKN/VersionSoftware" />
+										<xsl:with-param name="val" select="StatementGKN/VersionSoftware" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -10734,8 +10322,7 @@
 					<xsl:text>СВЕДЕНИЯ О ДОКУМЕНТЕ</xsl:text>
 				</span>
 			</p>
-			<table align="center" cellspacing="0" cellpadding="2"
-				border="1" bgcolor="#eeeeee">
+			<table align="center" cellspacing="0" cellpadding="2" border="1" bgcolor="#eeeeee">
 				<xsl:attribute name="width">
           <xsl:value-of select="$TableWidth" />
         </xsl:attribute>
@@ -10755,8 +10342,7 @@
 								<td>
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="50" />
-										<xsl:with-param name="val"
-											select="concat(@CodeType,../@CodeType)" />
+										<xsl:with-param name="val" select="concat(@CodeType,../@CodeType)" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -10787,8 +10373,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="50" />
-											<xsl:with-param name="val"
-												select="Sender/@Kod" />
+											<xsl:with-param name="val" select="Sender/@Kod" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -10803,8 +10388,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="50" />
-											<xsl:with-param name="val"
-												select="Sender/@Name" />
+											<xsl:with-param name="val" select="Sender/@Name" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -10819,8 +10403,7 @@
 									<td>
 										<xsl:call-template name="DateBox">
 											<xsl:with-param name="siz" select="50" />
-											<xsl:with-param name="val"
-												select="Sender/@Date_Upload" />
+											<xsl:with-param name="val" select="Sender/@Date_Upload" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -10835,8 +10418,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="50" />
-											<xsl:with-param name="val"
-												select="Sender/@Number" />
+											<xsl:with-param name="val" select="Sender/@Number" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -10851,8 +10433,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="50" />
-											<xsl:with-param name="val"
-												select="Sender/@FIO" />
+											<xsl:with-param name="val" select="Sender/@FIO" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -10867,8 +10448,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="50" />
-											<xsl:with-param name="val"
-												select="Sender/@Appointment" />
+											<xsl:with-param name="val" select="Sender/@Appointment" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -10883,8 +10463,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="50" />
-											<xsl:with-param name="val"
-												select="Sender/@E_Mail" />
+											<xsl:with-param name="val" select="Sender/@E_Mail" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -10899,8 +10478,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="50" />
-											<xsl:with-param name="val"
-												select="Sender/@Telephone" />
+											<xsl:with-param name="val" select="Sender/@Telephone" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -10932,8 +10510,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="50" />
-											<xsl:with-param name="val"
-												select="Recipient/@Kod" />
+											<xsl:with-param name="val" select="Recipient/@Kod" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -10948,8 +10525,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="50" />
-											<xsl:with-param name="val"
-												select="Recipient/@Name" />
+											<xsl:with-param name="val" select="Recipient/@Name" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -10964,16 +10540,14 @@
 
 	<xsl:template name="Main_eDocument">
 		<p />
-		<table align="center" cellspacing="0" cellpadding="2" border="1"
-			bgcolor="#eeeeee">
+		<table align="center" cellspacing="0" cellpadding="2" border="1" bgcolor="#eeeeee">
 			<xsl:attribute name="width">
         <xsl:value-of select="$TableWidth" />
       </xsl:attribute>
 			<tr>
 				<td align="center">
-					<!--xsl:if test="Sender or Recipient"> <a href="#"> <xsl:attribute name="onclick"> 
-						<xsl:text>DoXslt("eDocument",0);</xsl:text> </xsl:attribute> <span style="font-weight:bold"> 
-						<xsl:text>Сведения о документе</xsl:text> </span> </a> </xsl:if -->
+					<!--xsl:if test="Sender or Recipient"> <a href="#"> <xsl:attribute name="onclick"> <xsl:text>DoXslt("eDocument",0);</xsl:text> 
+						</xsl:attribute> <span style="font-weight:bold"> <xsl:text>Сведения о документе</xsl:text> </span> </a> </xsl:if -->
 					<!--xsl:if test="not(Sender) and not(Recipient)" -->
 					<span style="font-weight:bold">
 						<xsl:text>Сведения о документе</xsl:text>
@@ -10985,18 +10559,13 @@
 				<td align="center">
 					<table style="width:100%">
 						<xsl:call-template name="Table4" />
-						<!--tr> <td> <span> <xsl:text>Код организации отправителя</xsl:text> 
-							</span> </td> <td> <xsl:call-template name="TextBox"> <xsl:with-param name="siz" 
-							select="25"/> <xsl:with-param name="val" select="Sender/@Kod"/> </xsl:call-template> 
-							</td> <td> <span> <xsl:text>Код органа получателя</xsl:text> </span> </td> 
-							<td> <xsl:call-template name="TextBox"> <xsl:with-param name="siz" select="25"/> 
-							<xsl:with-param name="val" select="Recipient/@Kod"/> </xsl:call-template> 
-							</td> </tr -->
-						<!--xsl:if test="@CodeType!='' or ../@CodeType!=''"> <tr> <td colspan="2"> 
-							<span> <xsl:text>Код обрабатывающей программы</xsl:text> </span> </td> <td 
-							colspan="2"> <xsl:call-template name="TextBox"> <xsl:with-param name="siz" 
-							select="50"/> <xsl:with-param name="val" select="concat(@CodeType,../@CodeType)"/> 
-							</xsl:call-template> </td> </tr> </xsl:if -->
+						<!--tr> <td> <span> <xsl:text>Код организации отправителя</xsl:text> </span> </td> <td> <xsl:call-template name="TextBox"> 
+							<xsl:with-param name="siz" select="25"/> <xsl:with-param name="val" select="Sender/@Kod"/> </xsl:call-template> </td> <td> 
+							<span> <xsl:text>Код органа получателя</xsl:text> </span> </td> <td> <xsl:call-template name="TextBox"> <xsl:with-param name="siz" 
+							select="25"/> <xsl:with-param name="val" select="Recipient/@Kod"/> </xsl:call-template> </td> </tr -->
+						<!--xsl:if test="@CodeType!='' or ../@CodeType!=''"> <tr> <td colspan="2"> <span> <xsl:text>Код обрабатывающей программы</xsl:text> 
+							</span> </td> <td colspan="2"> <xsl:call-template name="TextBox"> <xsl:with-param name="siz" select="50"/> <xsl:with-param 
+							name="val" select="concat(@CodeType,../@CodeType)"/> </xsl:call-template> </td> </tr> </xsl:if -->
 						<xsl:if test="Sender/@Name!=''">
 							<tr>
 								<td>
@@ -11007,8 +10576,7 @@
 								<td colspan="3">
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="75" />
-										<xsl:with-param name="val"
-											select="Sender/@Name" />
+										<xsl:with-param name="val" select="Sender/@Name" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -11023,8 +10591,7 @@
 								<td colspan="3">
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="75" />
-										<xsl:with-param name="val"
-											select="Recipient/@Name" />
+										<xsl:with-param name="val" select="Recipient/@Name" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -11051,8 +10618,7 @@
 		</table>
 	</xsl:template>
 
-	<xsl:template name="Subjects"
-		xmlns:docs="http://rosreestr.ru/services/v0.1/commons/Documents"
+	<xsl:template name="Subjects" xmlns:docs="http://rosreestr.ru/services/v0.1/commons/Documents"
 		xmlns:stCom="http://rosreestr.ru/services/v0.1/TStatementCommons"
 		xmlns:addr="http://rosreestr.ru/services/v0.1/commons/Address"
 		xmlns:obj="http://rosreestr.ru/services/v0.1/commons/TObject"
@@ -11110,8 +10676,7 @@
 				<td colspan="3">
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="75" />
-						<xsl:with-param name="val"
-							select="subj:name|subj:Name" />
+						<xsl:with-param name="val" select="subj:name|subj:Name" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -11161,8 +10726,7 @@
 				<td>
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="25" />
-						<xsl:with-param name="val"
-							select="subj:nativeForeignParams/subj:nativeOrgParams/subj:ogrn" />
+						<xsl:with-param name="val" select="subj:nativeForeignParams/subj:nativeOrgParams/subj:ogrn" />
 					</xsl:call-template>
 				</td>
 				<td>
@@ -11173,14 +10737,12 @@
 				<td>
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="25" />
-						<xsl:with-param name="val"
-							select="subj:nativeForeignParams/subj:nativeOrgParams/subj:inn" />
+						<xsl:with-param name="val" select="subj:nativeForeignParams/subj:nativeOrgParams/subj:inn" />
 					</xsl:call-template>
 				</td>
 			</tr>
 		</xsl:if>
-		<xsl:if
-			test="subj:nativeForeignParams/subj:nativeOrgParams/subj:regDate">
+		<xsl:if test="subj:nativeForeignParams/subj:nativeOrgParams/subj:regDate">
 			<tr>
 				<td>
 					<span>
@@ -11190,14 +10752,12 @@
 				<td colspan="3">
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="75" />
-						<xsl:with-param name="val"
-							select="subj:nativeForeignParams/subj:nativeOrgParams/subj:regDate" />
+						<xsl:with-param name="val" select="subj:nativeForeignParams/subj:nativeOrgParams/subj:regDate" />
 					</xsl:call-template>
 				</td>
 			</tr>
 		</xsl:if>
-		<xsl:if
-			test="subj:nativeForeignParams/subj:foreignOrgParams/subj:countryCode">
+		<xsl:if test="subj:nativeForeignParams/subj:foreignOrgParams/subj:countryCode">
 			<tr>
 				<td>
 					<span>
@@ -11210,8 +10770,7 @@
 							<xsl:call-template name="DCountry" />
 						</xsl:with-param>
 						<xsl:with-param name="siz" select="75" />
-						<xsl:with-param name="val"
-							select="subj:nativeForeignParams/subj:foreignOrgParams/subj:countryCode" />
+						<xsl:with-param name="val" select="subj:nativeForeignParams/subj:foreignOrgParams/subj:countryCode" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -11227,8 +10786,7 @@
 				<td>
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="25" />
-						<xsl:with-param name="val"
-							select="subj:nativeForeignParams/subj:foreignOrgParams/subj:regDate" />
+						<xsl:with-param name="val" select="subj:nativeForeignParams/subj:foreignOrgParams/subj:regDate" />
 					</xsl:call-template>
 				</td>
 				<td>
@@ -11239,8 +10797,7 @@
 				<td>
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="25" />
-						<xsl:with-param name="val"
-							select="subj:nativeForeignParams/subj:foreignOrgParams/subj:regNumber" />
+						<xsl:with-param name="val" select="subj:nativeForeignParams/subj:foreignOrgParams/subj:regNumber" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -11256,8 +10813,7 @@
 				<td>
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="25" />
-						<xsl:with-param name="val"
-							select="subj:nativeForeignParams/subj:foreignOrgParams/subj:reOrg" />
+						<xsl:with-param name="val" select="subj:nativeForeignParams/subj:foreignOrgParams/subj:reOrg" />
 					</xsl:call-template>
 				</td>
 				<td>
@@ -11268,8 +10824,7 @@
 				<td>
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="25" />
-						<xsl:with-param name="val"
-							select="subj:nativeForeignParams/subj:foreignOrgParams/subj:kio" />
+						<xsl:with-param name="val" select="subj:nativeForeignParams/subj:foreignOrgParams/subj:kio" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -11362,8 +10917,7 @@
 				<td colspan="3">
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="75" />
-						<xsl:with-param name="val"
-							select="subj:idDocumentRef/@documentID" />
+						<xsl:with-param name="val" select="subj:idDocumentRef/@documentID" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -11399,8 +10953,7 @@
 							<xsl:call-template name="DCountry" />
 						</xsl:with-param>
 						<xsl:with-param name="siz" select="75" />
-						<xsl:with-param name="val"
-							select="subj:citizenship/subj:country" />
+						<xsl:with-param name="val" select="subj:citizenship/subj:country" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -11415,8 +10968,7 @@
 				<td colspan="3">
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="75" />
-						<xsl:with-param name="val"
-							select="subj:citizenship/subj:withoutCitizenship" />
+						<xsl:with-param name="val" select="subj:citizenship/subj:withoutCitizenship" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -11431,8 +10983,7 @@
 			</tr>
 		</xsl:if>
 		<xsl:for-each select="subj:previousData">
-			<xsl:if
-				test="subj:FIO/subj:surname or subj:FIO/subj:firstname">
+			<xsl:if test="subj:FIO/subj:surname or subj:FIO/subj:firstname">
 				<tr>
 					<td>
 						<span>
@@ -11442,8 +10993,7 @@
 					<td>
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="25" />
-							<xsl:with-param name="val"
-								select="subj:FIO/subj:surname" />
+							<xsl:with-param name="val" select="subj:FIO/subj:surname" />
 						</xsl:call-template>
 					</td>
 					<td>
@@ -11454,8 +11004,7 @@
 					<td>
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="25" />
-							<xsl:with-param name="val"
-								select="subj:FIO/subj:firstname" />
+							<xsl:with-param name="val" select="subj:FIO/subj:firstname" />
 						</xsl:call-template>
 					</td>
 				</tr>
@@ -11469,8 +11018,7 @@
 						<td colspan="3">
 							<xsl:call-template name="TextBox">
 								<xsl:with-param name="siz" select="75" />
-								<xsl:with-param name="val"
-									select="subj:FIO/subj:patronymic" />
+								<xsl:with-param name="val" select="subj:FIO/subj:patronymic" />
 							</xsl:call-template>
 						</td>
 					</tr>
@@ -11572,16 +11120,14 @@
 							<xsl:call-template name="dRegionsRF" />
 						</xsl:with-param>
 						<xsl:with-param name="siz" select="75" />
-						<xsl:with-param name="val"
-							select="subj:subjectCode" />
+						<xsl:with-param name="val" select="subj:subjectCode" />
 					</xsl:call-template>
 				</td>
 			</tr>
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template name="ContactInfo"
-		xmlns:subj="http://rosreestr.ru/services/v0.1/commons/Subjects">
+	<xsl:template name="ContactInfo" xmlns:subj="http://rosreestr.ru/services/v0.1/commons/Subjects">
 		<xsl:if test="subj:contactInfo">
 			<tr>
 				<td>
@@ -11591,8 +11137,7 @@
 				</td>
 			</tr>
 		</xsl:if>
-		<xsl:if
-			test="subj:contactInfo/subj:phoneNumber or subj:contactInfo/subj:email">
+		<xsl:if test="subj:contactInfo/subj:phoneNumber or subj:contactInfo/subj:email">
 			<tr>
 				<td>
 					<span>
@@ -11602,8 +11147,7 @@
 				<td>
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="25" />
-						<xsl:with-param name="val"
-							select="subj:contactInfo/subj:phoneNumber" />
+						<xsl:with-param name="val" select="subj:contactInfo/subj:phoneNumber" />
 					</xsl:call-template>
 				</td>
 				<td>
@@ -11614,8 +11158,7 @@
 				<td>
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="25" />
-						<xsl:with-param name="val"
-							select="subj:contactInfo/subj:email" />
+						<xsl:with-param name="val" select="subj:contactInfo/subj:email" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -11643,8 +11186,7 @@
 
 	<xsl:template name="Main_Coord_System_KPT">
 		<p />
-		<table align="center" cellspacing="0" cellpadding="2" border="1"
-			bgcolor="#eeeeee">
+		<table align="center" cellspacing="0" cellpadding="2" border="1" bgcolor="#eeeeee">
 			<xsl:attribute name="width">
         <xsl:value-of select="$TableWidth" />
       </xsl:attribute>
@@ -11704,8 +11246,7 @@
 								<td colspan="4">
 									<xsl:call-template name="TextBox">
 										<xsl:with-param name="siz" select="100" />
-										<xsl:with-param name="val"
-											select="@Description" />
+										<xsl:with-param name="val" select="@Description" />
 									</xsl:call-template>
 								</td>
 							</tr>
@@ -11748,8 +11289,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="25" />
-											<xsl:with-param name="val"
-												select="@Lowerbound" />
+											<xsl:with-param name="val" select="@Lowerbound" />
 										</xsl:call-template>
 									</td>
 									<td>
@@ -11760,8 +11300,7 @@
 									<td>
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="25" />
-											<xsl:with-param name="val"
-												select="@Upperbound" />
+											<xsl:with-param name="val" select="@Upperbound" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -11773,8 +11312,7 @@
 		</table>
 	</xsl:template>
 
-	<xsl:template name="ObjectsStatement01"
-		xmlns:obj="http://rosreestr.ru/services/v0.1/commons/TObject">
+	<xsl:template name="ObjectsStatement01" xmlns:obj="http://rosreestr.ru/services/v0.1/commons/TObject">
 
 		<xsl:if test="obj:objectTypeCode != ''">
 			<tr>
@@ -11789,8 +11327,7 @@
 							<xsl:call-template name="DObjectType" />
 						</xsl:with-param>
 						<xsl:with-param name="siz" select="75" />
-						<xsl:with-param name="val"
-							select="obj:objectTypeCode" />
+						<xsl:with-param name="val" select="obj:objectTypeCode" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -11805,8 +11342,7 @@
 				<td colspan="3">
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="75" />
-						<xsl:with-param name="val"
-							select="obj:customTypeDesc" />
+						<xsl:with-param name="val" select="obj:customTypeDesc" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -11821,8 +11357,7 @@
 				<td colspan="3">
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="75" />
-						<xsl:with-param name="val"
-							select="obj:cadastralNumber/obj:cadastralNumber" />
+						<xsl:with-param name="val" select="obj:cadastralNumber/obj:cadastralNumber" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -11837,8 +11372,7 @@
 				<td colspan="3">
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="75" />
-						<xsl:with-param name="val"
-							select="obj:cadastralNumber/obj:oldCadastralNumber" />
+						<xsl:with-param name="val" select="obj:cadastralNumber/obj:oldCadastralNumber" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -11853,8 +11387,7 @@
 				<td colspan="3">
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="75" />
-						<xsl:with-param name="val"
-							select="obj:cadastralNumber/obj:conditionalNumber" />
+						<xsl:with-param name="val" select="obj:cadastralNumber/obj:conditionalNumber" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -12062,8 +11595,7 @@
 									<xsl:call-template name="dAss_b" />
 								</xsl:with-param>
 								<xsl:with-param name="siz" select="75" />
-								<xsl:with-param name="val"
-									select="obj:objectPurpose" />
+								<xsl:with-param name="val" select="obj:objectPurpose" />
 							</xsl:call-template>
 						</td>
 					</tr>
@@ -12081,8 +11613,7 @@
 									<xsl:call-template name="dAss_f" />
 								</xsl:with-param>
 								<xsl:with-param name="siz" select="75" />
-								<xsl:with-param name="val"
-									select="obj:roomPurpose" />
+								<xsl:with-param name="val" select="obj:roomPurpose" />
 							</xsl:call-template>
 						</td>
 					</tr>
@@ -12100,8 +11631,7 @@
 									<xsl:call-template name="dAss_f" />
 								</xsl:with-param>
 								<xsl:with-param name="siz" select="75" />
-								<xsl:with-param name="val"
-									select="obj:housingPurpose" />
+								<xsl:with-param name="val" select="obj:housingPurpose" />
 							</xsl:call-template>
 						</td>
 					</tr>
@@ -12175,8 +11705,7 @@
 				<td colspan="3">
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="75" />
-						<xsl:with-param name="val"
-							select="obj:number/obj:cadastralNumber" />
+						<xsl:with-param name="val" select="obj:number/obj:cadastralNumber" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -12191,8 +11720,7 @@
 				<td colspan="3">
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="75" />
-						<xsl:with-param name="val"
-							select="obj:number/obj:oldCadastralNumber" />
+						<xsl:with-param name="val" select="obj:number/obj:oldCadastralNumber" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -12207,8 +11735,7 @@
 				<td colspan="3">
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="75" />
-						<xsl:with-param name="val"
-							select="obj:number/obj:conditionalNumber" />
+						<xsl:with-param name="val" select="obj:number/obj:conditionalNumber" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -12231,8 +11758,7 @@
 	</xsl:template>
 	<xsl:template name="Main_Coord_Systems">
 		<p />
-		<table align="center" cellspacing="0" cellpadding="2" border="1"
-			bgcolor="#eeeeee">
+		<table align="center" cellspacing="0" cellpadding="2" border="1" bgcolor="#eeeeee">
 			<xsl:attribute name="width">
         <xsl:value-of select="$TableWidth" />
       </xsl:attribute>
@@ -12292,8 +11818,7 @@
 									<td colspan="4">
 										<xsl:call-template name="TextBox">
 											<xsl:with-param name="siz" select="100" />
-											<xsl:with-param name="val"
-												select="@Description" />
+											<xsl:with-param name="val" select="@Description" />
 										</xsl:call-template>
 									</td>
 								</tr>
@@ -12321,8 +11846,7 @@
 										<td>
 											<xsl:call-template name="TextBox">
 												<xsl:with-param name="siz" select="25" />
-												<xsl:with-param name="val"
-													select="@Tolerance" />
+												<xsl:with-param name="val" select="@Tolerance" />
 											</xsl:call-template>
 										</td>
 									</tr>
@@ -12337,8 +11861,7 @@
 										<td>
 											<xsl:call-template name="TextBox">
 												<xsl:with-param name="siz" select="25" />
-												<xsl:with-param name="val"
-													select="@Lowerbound" />
+												<xsl:with-param name="val" select="@Lowerbound" />
 											</xsl:call-template>
 										</td>
 										<td>
@@ -12349,8 +11872,7 @@
 										<td>
 											<xsl:call-template name="TextBox">
 												<xsl:with-param name="siz" select="25" />
-												<xsl:with-param name="val"
-													select="@Upperbound" />
+												<xsl:with-param name="val" select="@Upperbound" />
 											</xsl:call-template>
 										</td>
 									</tr>
@@ -12363,8 +11885,7 @@
 		</table>
 	</xsl:template>
 
-	<xsl:template name="Documents_Statement"
-		xmlns:docs="http://rosreestr.ru/services/v0.1/commons/Documents"
+	<xsl:template name="Documents_Statement" xmlns:docs="http://rosreestr.ru/services/v0.1/commons/Documents"
 		xmlns:commons="http://rosreestr.ru/services/v0.1/commons/Commons">
 		<xsl:for-each select="docs:documentTypes">
 			<xsl:variable name="docType">
@@ -12504,8 +12025,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="*/docs:pageCount" />
+									<xsl:with-param name="val" select="*/docs:pageCount" />
 								</xsl:call-template>
 							</td>
 							<td>
@@ -12516,8 +12036,7 @@
 							<td>
 								<xsl:call-template name="TextBox">
 									<xsl:with-param name="siz" select="25" />
-									<xsl:with-param name="val"
-										select="*/docs:docCount" />
+									<xsl:with-param name="val" select="*/docs:docCount" />
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -12533,8 +12052,7 @@
 					</span>
 				</td>
 			</tr>
-			<xsl:if
-				test="docs:notes/commons:code or docs:notes/commons:text">
+			<xsl:if test="docs:notes/commons:code or docs:notes/commons:text">
 				<tr>
 					<td>
 						<span>
@@ -12544,8 +12062,7 @@
 					<td>
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="25" />
-							<xsl:with-param name="val"
-								select="docs:notes/commons:code" />
+							<xsl:with-param name="val" select="docs:notes/commons:code" />
 						</xsl:call-template>
 					</td>
 					<td>
@@ -12556,8 +12073,7 @@
 					<td>
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="25" />
-							<xsl:with-param name="val"
-								select="docs:notes/commons:text" />
+							<xsl:with-param name="val" select="docs:notes/commons:text" />
 						</xsl:call-template>
 					</td>
 				</tr>
@@ -12603,8 +12119,7 @@
 				<td>
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="25" />
-						<xsl:with-param name="val"
-							select="docs:durationStart" />
+						<xsl:with-param name="val" select="docs:durationStart" />
 					</xsl:call-template>
 				</td>
 				<td>
@@ -12615,8 +12130,7 @@
 				<td>
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="25" />
-						<xsl:with-param name="val"
-							select="docs:durationStop" />
+						<xsl:with-param name="val" select="docs:durationStop" />
 					</xsl:call-template>
 				</td>
 			</tr>
@@ -12639,14 +12153,12 @@
 					<td colspan="3">
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="75" />
-							<xsl:with-param name="val"
-								select="docs:notaryInfo/docs:notaryFullName" />
+							<xsl:with-param name="val" select="docs:notaryInfo/docs:notaryFullName" />
 						</xsl:call-template>
 					</td>
 				</tr>
 			</xsl:if>
-			<xsl:if
-				test="docs:notaryInfo/docs:registryNumber or docs:notaryInfo/docs:dateOfCertification">
+			<xsl:if test="docs:notaryInfo/docs:registryNumber or docs:notaryInfo/docs:dateOfCertification">
 				<tr>
 					<td>
 						<span>
@@ -12656,8 +12168,7 @@
 					<td>
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="25" />
-							<xsl:with-param name="val"
-								select="docs:notaryInfo/docs:registryNumber" />
+							<xsl:with-param name="val" select="docs:notaryInfo/docs:registryNumber" />
 						</xsl:call-template>
 					</td>
 					<td>
@@ -12668,8 +12179,7 @@
 					<td>
 						<xsl:call-template name="TextBox">
 							<xsl:with-param name="siz" select="25" />
-							<xsl:with-param name="val"
-								select="docs:notaryInfo/docs:dateOfCertification" />
+							<xsl:with-param name="val" select="docs:notaryInfo/docs:dateOfCertification" />
 						</xsl:call-template>
 					</td>
 				</tr>
@@ -12686,16 +12196,14 @@
 				<td colspan="3">
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="75" />
-						<xsl:with-param name="val"
-							select="docs:officialPublicationSource" />
+						<xsl:with-param name="val" select="docs:officialPublicationSource" />
 					</xsl:call-template>
 				</td>
 			</tr>
 		</xsl:if>
 
 	</xsl:template>
-	<xsl:template name="FileSign"
-		xmlns:docs="http://rosreestr.ru/services/v0.1/commons/Documents">
+	<xsl:template name="FileSign" xmlns:docs="http://rosreestr.ru/services/v0.1/commons/Documents">
 		<xsl:if test="docs:fileURI">
 			<tr>
 				<td>
@@ -12709,9 +12217,8 @@
 						<xsl:with-param name="val" select="docs:fileURI" />
 					</xsl:call-template>
 				</td>
-				<!--td> <span> <xsl:text>MD5 сумма</xsl:text> </span> </td> <td> <xsl:call-template 
-					name="TextBox"> <xsl:with-param name="siz" select="25"/> <xsl:with-param 
-					name="val" select="docs:md5sum"/> </xsl:call-template> </td -->
+				<!--td> <span> <xsl:text>MD5 сумма</xsl:text> </span> </td> <td> <xsl:call-template name="TextBox"> <xsl:with-param name="siz" 
+					select="25"/> <xsl:with-param name="val" select="docs:md5sum"/> </xsl:call-template> </td -->
 			</tr>
 		</xsl:if>
 		<xsl:if test="docs:fileSize or docs:fileCreationDate">
@@ -12735,8 +12242,7 @@
 				<td>
 					<xsl:call-template name="TextBox">
 						<xsl:with-param name="siz" select="25" />
-						<xsl:with-param name="val"
-							select="docs:fileCreationDate" />
+						<xsl:with-param name="val" select="docs:fileCreationDate" />
 					</xsl:call-template>
 				</td>
 			</tr>

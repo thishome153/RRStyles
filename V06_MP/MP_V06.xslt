@@ -1539,7 +1539,7 @@
 	</xsl:template>
 
 	<!-- Метод определения координат характерных точек границ земельных участков и их частей -->
-	<!-- Грузим enumeration schema dGeopointOpred_v01.xsd -->
+	<!-- Грузим enumeration schema / dGeopointOpred_v01.xsd -->
 	<xsl:template name="GeopointsOpred">
 		<xsl:if test="//Survey/GeopointsOpred">
 
